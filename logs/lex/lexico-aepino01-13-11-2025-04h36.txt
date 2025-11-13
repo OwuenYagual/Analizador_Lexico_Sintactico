@@ -1,0 +1,88 @@
+ANÁLISIS LÉXICO (Ruby)
+Usuario Git : aepino01
+Fecha : 2025-11-13 04:36:05.472911
+------------------------------------------------------------
+TOKENS:
+L  1 DEF          'def'
+L  1 ID           'fibonacci'
+L  1 LPAR         '('
+L  1 ID           'n'
+L  1 RPAR         ')'
+L  1 NEWLINE      '\n'
+L  2 ID           'a'
+L  2 NUMBER       0
+L  2 NEWLINE      '\n'
+L  3 ID           'b'
+L  3 NUMBER       1
+L  3 NEWLINE      '\n'
+L  4 ID           'i'
+L  4 NUMBER       0
+L  4 NEWLINE      '\n\n'
+L  6 WHILE        'while'
+L  6 ID           'i'
+L  6 MENORQ       '<'
+L  6 ID           'n'
+L  6 NEWLINE      '\n'
+L  7 ID           'puts'
+L  7 ID           'a'
+L  7 NEWLINE      '\n'
+L  8 ID           'temp'
+L  8 ID           'a'
+L  8 PLUS         '+'
+L  8 ID           'b'
+L  8 NEWLINE      '\n'
+L  9 ID           'a'
+L  9 ID           'b'
+L  9 NEWLINE      '\n'
+L 10 ID           'b'
+L 10 ID           'temp'
+L 10 NEWLINE      '\n'
+L 11 ID           'i'
+L 11 ID           'i'
+L 11 PLUS         '+'
+L 11 NUMBER       1
+L 11 NEWLINE      '\n'
+L 12 END          'end'
+L 12 NEWLINE      '\n'
+L 13 END          'end'
+L 13 NEWLINE      '\n\n'
+L 15 ID           'puts'
+L 15 STRING       'Ingrese el número de términos:'
+L 15 NEWLINE      '\n'
+L 16 ID           'num'
+L 16 ID           'gets'
+L 16 PTO          '.'
+L 16 ID           'to_i'
+L 16 NEWLINE      '\n\n'
+L 18 IF           'if'
+L 18 ID           'num'
+L 18 MAYORQ       '>'
+L 18 NUMBER       0
+L 18 NEWLINE      '\n'
+L 19 ID           'fibonacci'
+L 19 LPAR         '('
+L 19 ID           'num'
+L 19 RPAR         ')'
+L 19 NEWLINE      '\n'
+L 20 ELSE         'else'
+L 20 NEWLINE      '\n'
+L 21 ID           'puts'
+L 21 STRING       'Debe ingresar un número mayor que 0'
+L 21 NEWLINE      '\n'
+L 22 END          'end'
+L 22 NEWLINE      '\n'
+
+------------------------------------------------------------
+ERRORES LÉXICOS:
+L  2 '='    Caracter ilegal '=' en la línea 2
+L  3 '='    Caracter ilegal '=' en la línea 3
+L  4 '='    Caracter ilegal '=' en la línea 4
+L  8 '='    Caracter ilegal '=' en la línea 8
+L  9 '='    Caracter ilegal '=' en la línea 9
+L 10 '='    Caracter ilegal '=' en la línea 10
+L 11 '='    Caracter ilegal '=' en la línea 11
+L 16 '='    Caracter ilegal '=' en la línea 16
+
+RESUMEN:
+Total de tokens : 68
+Errores léxicos : 8

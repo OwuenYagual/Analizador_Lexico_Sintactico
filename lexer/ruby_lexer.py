@@ -80,6 +80,10 @@ tokens = (
     'OR',
     'NOT',
 
+    #asignacion
+    'ASIG',
+    'MASIG',
+
     # otros
     'NEWLINE',
 ) + tuple(reserved.values())
@@ -116,6 +120,9 @@ t_SEMICOLON = r';'
 t_AND       = r'&&'
 t_OR        = r'\|\|'
 t_NOT       = r'!'
+
+t_MASIG = r'\+='
+t_ASIG = r'='
 
 # ===== Tokens complejos =====
 
