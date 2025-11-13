@@ -7,7 +7,7 @@ reserved = {
             "case": "CASE",
             "class": "CLASS",
             "def": "DEF",
-            "defined?": "DEFINED?",
+            "defined?": "DEFINED",
             "do": "DO",
             "else": "ELSE",
             "elsif":"ELSIF",
