@@ -152,3 +152,66 @@ def construir_parser():
     parser_errors = []
     parser = yacc.yacc()
     return parser, parser_errors
+
+# ============================================================
+# ===================== INTEGRANTE 2 ==========================
+# Andres Pino G.
+# ============================================================
+
+# ---------- EXPRESIONES ARITMÉTICAS / RELACIONALES / LÓGICAS ----------
+def p_expr_binop(p):
+    '''expr : expr PLUS expr
+            | expr MINUS expr
+            | expr TIMES expr
+            | expr DIVIDE expr
+            | expr MOD expr
+            | expr EXP expr
+            | expr IGUAL expr
+            | expr DIFERENTE expr
+            | expr MAYORQ expr
+            | expr MENORQ expr
+            | expr MAYORIG expr
+            | expr MENORIG expr
+            | expr AND expr
+            | expr OR expr'''
+    p[0] = ("binop", p[2], p[1], p[3])
+
+def p_expr_group(p):
+    'expr : LPAR expr RPAR'
+    p[0] = p[2]
+
+def p_expr_unary_not(p):
+    'expr : NOT expr'
+    p[0] = ("not", p[2])
+
+def p_expr_literal(p):
+    '''expr : NUMBER
+            | STRING
+            | TRUE
+            | FALSE
+            | NIL'''
+    p[0] = ("lit", p[1])
+
+def p_expr_var(p):
+    'expr : ID'
+    p[0] = ("var", p[1])
+
+# ---------- IF ----------
+def p_if_stmt(p):
+    '''if_stmt : IF expr THEN statement_list END
+               | IF expr statement_list END'''
+    if len(p) == 6:
+        p[0] = ("if", p[2], p[4])
+    else:
+        p[0] = ("if", p[2], p[3])
+
+# ---------- WHILE ----------
+def p_while_stmt(p):
+    '''while_stmt : WHILE expr DO statement_list END
+                  | WHILE expr statement_list END'''
+    if len(p) == 6:
+        p[0] = ("while", p[2], p[4])
+    else:
+        p[0] = ("while", p[2], p[3])
+
+
