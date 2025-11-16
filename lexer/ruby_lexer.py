@@ -1,4 +1,4 @@
-# rubylexer.py
+# ruby_lexer.py
 import ply.lex as lex
 
 # Palabras reservadas de Ruby
@@ -40,6 +40,7 @@ reserved = {
     "yield":   "YIELD",
     "_FILE_":  "_FILE_",
     "_LINE_":  "_LINE_",
+    "gets": "GETS",
 }
 
 tokens = (
