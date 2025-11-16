@@ -1,0 +1,3835 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement_list statement
+Rule 3     statement_list -> statement
+Rule 4     statement -> print_stmt
+Rule 5     statement -> input_stmt
+Rule 6     statement -> assign_stmt
+Rule 7     statement -> if_stmt
+Rule 8     statement -> while_stmt
+Rule 9     statement -> func_def
+Rule 10    statement -> class_def
+Rule 11    statement -> data_structure_stmt
+Rule 12    print_stmt -> ID expr
+Rule 13    input_stmt -> ID ASIG GETS
+Rule 14    assign_stmt -> ID ASIG expr
+Rule 15    assign_stmt -> ID MASIG expr
+Rule 16    expr -> expr PLUS expr
+Rule 17    expr -> expr MINUS expr
+Rule 18    expr -> expr TIMES expr
+Rule 19    expr -> expr DIVIDE expr
+Rule 20    expr -> expr MOD expr
+Rule 21    expr -> expr EXP expr
+Rule 22    expr -> expr IGUAL expr
+Rule 23    expr -> expr DIFERENTE expr
+Rule 24    expr -> expr MAYORQ expr
+Rule 25    expr -> expr MENORQ expr
+Rule 26    expr -> expr MAYORIG expr
+Rule 27    expr -> expr MENORIG expr
+Rule 28    expr -> expr AND expr
+Rule 29    expr -> expr OR expr
+Rule 30    expr -> LPAR expr RPAR
+Rule 31    expr -> NOT expr
+Rule 32    expr -> NUMBER
+Rule 33    expr -> STRING
+Rule 34    expr -> TRUE
+Rule 35    expr -> FALSE
+Rule 36    expr -> NIL
+Rule 37    expr -> ID
+Rule 38    statement_list -> statement_list NEWLINE
+Rule 39    if_stmt -> IF expr NEWLINE statement_list END
+Rule 40    if_stmt -> IF expr THEN statement_list END
+Rule 41    if_stmt -> IF expr statement_list END
+Rule 42    while_stmt -> WHILE expr NEWLINE statement_list END
+Rule 43    while_stmt -> WHILE expr DO statement_list END
+Rule 44    while_stmt -> WHILE expr statement_list END
+Rule 45    statement -> NEWLINE statement
+Rule 46    data_structure_stmt -> ID ASIG LCOR expr_list RCOR
+Rule 47    expr_list -> expr_list COMA expr
+Rule 48    expr_list -> expr
+Rule 49    func_def -> DEF ID param_list_opt NEWLINE statement_list END
+Rule 50    param_list_opt -> <empty>
+Rule 51    param_list_opt -> LPAR param_list RPAR
+Rule 52    param_list -> param_list COMA ID
+Rule 53    param_list -> ID
+Rule 54    class_def -> CLASS ID NEWLINE class_body END
+Rule 55    class_body -> statement_list
+
+Terminals, with rules where they appear
+
+AND                  : 28
+ASIG                 : 13 14 46
+CLASS                : 54
+COMA                 : 47 52
+DEF                  : 49
+DIFERENTE            : 23
+DIVIDE               : 19
+DO                   : 43
+END                  : 39 40 41 42 43 44 49 54
+EXP                  : 21
+FALSE                : 35
+GETS                 : 13
+ID                   : 12 13 14 15 37 46 49 52 53 54
+IF                   : 39 40 41
+IGUAL                : 22
+LCOR                 : 46
+LPAR                 : 30 51
+MASIG                : 15
+MAYORIG              : 26
+MAYORQ               : 24
+MENORIG              : 27
+MENORQ               : 25
+MINUS                : 17
+MOD                  : 20
+NEWLINE              : 38 39 42 45 49 54
+NIL                  : 36
+NOT                  : 31
+NUMBER               : 32
+OR                   : 29
+PLUS                 : 16
+RCOR                 : 46
+RPAR                 : 30 51
+STRING               : 33
+THEN                 : 40
+TIMES                : 18
+TRUE                 : 34
+WHILE                : 42 43 44
+error                : 
+
+Nonterminals, with rules where they appear
+
+assign_stmt          : 6
+class_body           : 54
+class_def            : 10
+data_structure_stmt  : 11
+expr                 : 12 14 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 31 39 40 41 42 43 44 47 48
+expr_list            : 46 47
+func_def             : 9
+if_stmt              : 7
+input_stmt           : 5
+param_list           : 51 52
+param_list_opt       : 49
+print_stmt           : 4
+program              : 0
+statement            : 2 3 45
+statement_list       : 1 2 38 39 40 41 42 43 44 49 55
+while_stmt           : 8
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (38) statement_list -> . statement_list NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    NEWLINE         shift and go to state 4
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+    (2) statement_list -> statement_list . statement
+    (38) statement_list -> statement_list . NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    $end            reduce using rule 1 (program -> statement_list .)
+    NEWLINE         shift and go to state 19
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement                      shift and go to state 18
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 3
+
+    (3) statement_list -> statement .
+
+    NEWLINE         reduce using rule 3 (statement_list -> statement .)
+    ID              reduce using rule 3 (statement_list -> statement .)
+    IF              reduce using rule 3 (statement_list -> statement .)
+    WHILE           reduce using rule 3 (statement_list -> statement .)
+    DEF             reduce using rule 3 (statement_list -> statement .)
+    CLASS           reduce using rule 3 (statement_list -> statement .)
+    $end            reduce using rule 3 (statement_list -> statement .)
+    END             reduce using rule 3 (statement_list -> statement .)
+
+
+state 4
+
+    (45) statement -> NEWLINE . statement
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    NEWLINE         shift and go to state 4
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement                      shift and go to state 20
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 5
+
+    (4) statement -> print_stmt .
+
+    NEWLINE         reduce using rule 4 (statement -> print_stmt .)
+    ID              reduce using rule 4 (statement -> print_stmt .)
+    IF              reduce using rule 4 (statement -> print_stmt .)
+    WHILE           reduce using rule 4 (statement -> print_stmt .)
+    DEF             reduce using rule 4 (statement -> print_stmt .)
+    CLASS           reduce using rule 4 (statement -> print_stmt .)
+    $end            reduce using rule 4 (statement -> print_stmt .)
+    END             reduce using rule 4 (statement -> print_stmt .)
+
+
+state 6
+
+    (5) statement -> input_stmt .
+
+    NEWLINE         reduce using rule 5 (statement -> input_stmt .)
+    ID              reduce using rule 5 (statement -> input_stmt .)
+    IF              reduce using rule 5 (statement -> input_stmt .)
+    WHILE           reduce using rule 5 (statement -> input_stmt .)
+    DEF             reduce using rule 5 (statement -> input_stmt .)
+    CLASS           reduce using rule 5 (statement -> input_stmt .)
+    $end            reduce using rule 5 (statement -> input_stmt .)
+    END             reduce using rule 5 (statement -> input_stmt .)
+
+
+state 7
+
+    (6) statement -> assign_stmt .
+
+    NEWLINE         reduce using rule 6 (statement -> assign_stmt .)
+    ID              reduce using rule 6 (statement -> assign_stmt .)
+    IF              reduce using rule 6 (statement -> assign_stmt .)
+    WHILE           reduce using rule 6 (statement -> assign_stmt .)
+    DEF             reduce using rule 6 (statement -> assign_stmt .)
+    CLASS           reduce using rule 6 (statement -> assign_stmt .)
+    $end            reduce using rule 6 (statement -> assign_stmt .)
+    END             reduce using rule 6 (statement -> assign_stmt .)
+
+
+state 8
+
+    (7) statement -> if_stmt .
+
+    NEWLINE         reduce using rule 7 (statement -> if_stmt .)
+    ID              reduce using rule 7 (statement -> if_stmt .)
+    IF              reduce using rule 7 (statement -> if_stmt .)
+    WHILE           reduce using rule 7 (statement -> if_stmt .)
+    DEF             reduce using rule 7 (statement -> if_stmt .)
+    CLASS           reduce using rule 7 (statement -> if_stmt .)
+    $end            reduce using rule 7 (statement -> if_stmt .)
+    END             reduce using rule 7 (statement -> if_stmt .)
+
+
+state 9
+
+    (8) statement -> while_stmt .
+
+    NEWLINE         reduce using rule 8 (statement -> while_stmt .)
+    ID              reduce using rule 8 (statement -> while_stmt .)
+    IF              reduce using rule 8 (statement -> while_stmt .)
+    WHILE           reduce using rule 8 (statement -> while_stmt .)
+    DEF             reduce using rule 8 (statement -> while_stmt .)
+    CLASS           reduce using rule 8 (statement -> while_stmt .)
+    $end            reduce using rule 8 (statement -> while_stmt .)
+    END             reduce using rule 8 (statement -> while_stmt .)
+
+
+state 10
+
+    (9) statement -> func_def .
+
+    NEWLINE         reduce using rule 9 (statement -> func_def .)
+    ID              reduce using rule 9 (statement -> func_def .)
+    IF              reduce using rule 9 (statement -> func_def .)
+    WHILE           reduce using rule 9 (statement -> func_def .)
+    DEF             reduce using rule 9 (statement -> func_def .)
+    CLASS           reduce using rule 9 (statement -> func_def .)
+    $end            reduce using rule 9 (statement -> func_def .)
+    END             reduce using rule 9 (statement -> func_def .)
+
+
+state 11
+
+    (10) statement -> class_def .
+
+    NEWLINE         reduce using rule 10 (statement -> class_def .)
+    ID              reduce using rule 10 (statement -> class_def .)
+    IF              reduce using rule 10 (statement -> class_def .)
+    WHILE           reduce using rule 10 (statement -> class_def .)
+    DEF             reduce using rule 10 (statement -> class_def .)
+    CLASS           reduce using rule 10 (statement -> class_def .)
+    $end            reduce using rule 10 (statement -> class_def .)
+    END             reduce using rule 10 (statement -> class_def .)
+
+
+state 12
+
+    (11) statement -> data_structure_stmt .
+
+    NEWLINE         reduce using rule 11 (statement -> data_structure_stmt .)
+    ID              reduce using rule 11 (statement -> data_structure_stmt .)
+    IF              reduce using rule 11 (statement -> data_structure_stmt .)
+    WHILE           reduce using rule 11 (statement -> data_structure_stmt .)
+    DEF             reduce using rule 11 (statement -> data_structure_stmt .)
+    CLASS           reduce using rule 11 (statement -> data_structure_stmt .)
+    $end            reduce using rule 11 (statement -> data_structure_stmt .)
+    END             reduce using rule 11 (statement -> data_structure_stmt .)
+
+
+state 13
+
+    (12) print_stmt -> ID . expr
+    (13) input_stmt -> ID . ASIG GETS
+    (14) assign_stmt -> ID . ASIG expr
+    (15) assign_stmt -> ID . MASIG expr
+    (46) data_structure_stmt -> ID . ASIG LCOR expr_list RCOR
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    ASIG            shift and go to state 23
+    MASIG           shift and go to state 24
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 22
+
+state 14
+
+    (39) if_stmt -> IF . expr NEWLINE statement_list END
+    (40) if_stmt -> IF . expr THEN statement_list END
+    (41) if_stmt -> IF . expr statement_list END
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 32
+
+state 15
+
+    (42) while_stmt -> WHILE . expr NEWLINE statement_list END
+    (43) while_stmt -> WHILE . expr DO statement_list END
+    (44) while_stmt -> WHILE . expr statement_list END
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 33
+
+state 16
+
+    (49) func_def -> DEF . ID param_list_opt NEWLINE statement_list END
+
+    ID              shift and go to state 34
+
+
+state 17
+
+    (54) class_def -> CLASS . ID NEWLINE class_body END
+
+    ID              shift and go to state 35
+
+
+state 18
+
+    (2) statement_list -> statement_list statement .
+
+    NEWLINE         reduce using rule 2 (statement_list -> statement_list statement .)
+    ID              reduce using rule 2 (statement_list -> statement_list statement .)
+    IF              reduce using rule 2 (statement_list -> statement_list statement .)
+    WHILE           reduce using rule 2 (statement_list -> statement_list statement .)
+    DEF             reduce using rule 2 (statement_list -> statement_list statement .)
+    CLASS           reduce using rule 2 (statement_list -> statement_list statement .)
+    $end            reduce using rule 2 (statement_list -> statement_list statement .)
+    END             reduce using rule 2 (statement_list -> statement_list statement .)
+
+
+state 19
+
+    (38) statement_list -> statement_list NEWLINE .
+    (45) statement -> NEWLINE . statement
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+  ! shift/reduce conflict for NEWLINE resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for DEF resolved as shift
+  ! shift/reduce conflict for CLASS resolved as shift
+    $end            reduce using rule 38 (statement_list -> statement_list NEWLINE .)
+    END             reduce using rule 38 (statement_list -> statement_list NEWLINE .)
+    NEWLINE         shift and go to state 4
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+  ! NEWLINE         [ reduce using rule 38 (statement_list -> statement_list NEWLINE .) ]
+  ! ID              [ reduce using rule 38 (statement_list -> statement_list NEWLINE .) ]
+  ! IF              [ reduce using rule 38 (statement_list -> statement_list NEWLINE .) ]
+  ! WHILE           [ reduce using rule 38 (statement_list -> statement_list NEWLINE .) ]
+  ! DEF             [ reduce using rule 38 (statement_list -> statement_list NEWLINE .) ]
+  ! CLASS           [ reduce using rule 38 (statement_list -> statement_list NEWLINE .) ]
+
+    statement                      shift and go to state 20
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 20
+
+    (45) statement -> NEWLINE statement .
+
+    NEWLINE         reduce using rule 45 (statement -> NEWLINE statement .)
+    ID              reduce using rule 45 (statement -> NEWLINE statement .)
+    IF              reduce using rule 45 (statement -> NEWLINE statement .)
+    WHILE           reduce using rule 45 (statement -> NEWLINE statement .)
+    DEF             reduce using rule 45 (statement -> NEWLINE statement .)
+    CLASS           reduce using rule 45 (statement -> NEWLINE statement .)
+    $end            reduce using rule 45 (statement -> NEWLINE statement .)
+    END             reduce using rule 45 (statement -> NEWLINE statement .)
+
+
+state 21
+
+    (37) expr -> ID .
+
+    PLUS            reduce using rule 37 (expr -> ID .)
+    MINUS           reduce using rule 37 (expr -> ID .)
+    TIMES           reduce using rule 37 (expr -> ID .)
+    DIVIDE          reduce using rule 37 (expr -> ID .)
+    MOD             reduce using rule 37 (expr -> ID .)
+    EXP             reduce using rule 37 (expr -> ID .)
+    IGUAL           reduce using rule 37 (expr -> ID .)
+    DIFERENTE       reduce using rule 37 (expr -> ID .)
+    MAYORQ          reduce using rule 37 (expr -> ID .)
+    MENORQ          reduce using rule 37 (expr -> ID .)
+    MAYORIG         reduce using rule 37 (expr -> ID .)
+    MENORIG         reduce using rule 37 (expr -> ID .)
+    AND             reduce using rule 37 (expr -> ID .)
+    OR              reduce using rule 37 (expr -> ID .)
+    NEWLINE         reduce using rule 37 (expr -> ID .)
+    ID              reduce using rule 37 (expr -> ID .)
+    IF              reduce using rule 37 (expr -> ID .)
+    WHILE           reduce using rule 37 (expr -> ID .)
+    DEF             reduce using rule 37 (expr -> ID .)
+    CLASS           reduce using rule 37 (expr -> ID .)
+    $end            reduce using rule 37 (expr -> ID .)
+    END             reduce using rule 37 (expr -> ID .)
+    THEN            reduce using rule 37 (expr -> ID .)
+    DO              reduce using rule 37 (expr -> ID .)
+    RPAR            reduce using rule 37 (expr -> ID .)
+    RCOR            reduce using rule 37 (expr -> ID .)
+    COMA            reduce using rule 37 (expr -> ID .)
+
+
+state 22
+
+    (12) print_stmt -> ID expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    NEWLINE         reduce using rule 12 (print_stmt -> ID expr .)
+    ID              reduce using rule 12 (print_stmt -> ID expr .)
+    IF              reduce using rule 12 (print_stmt -> ID expr .)
+    WHILE           reduce using rule 12 (print_stmt -> ID expr .)
+    DEF             reduce using rule 12 (print_stmt -> ID expr .)
+    CLASS           reduce using rule 12 (print_stmt -> ID expr .)
+    $end            reduce using rule 12 (print_stmt -> ID expr .)
+    END             reduce using rule 12 (print_stmt -> ID expr .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+    IGUAL           shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    MAYORQ          shift and go to state 44
+    MENORQ          shift and go to state 45
+    MAYORIG         shift and go to state 46
+    MENORIG         shift and go to state 47
+    AND             shift and go to state 48
+    OR              shift and go to state 49
+
+
+state 23
+
+    (13) input_stmt -> ID ASIG . GETS
+    (14) assign_stmt -> ID ASIG . expr
+    (46) data_structure_stmt -> ID ASIG . LCOR expr_list RCOR
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    GETS            shift and go to state 50
+    LCOR            shift and go to state 52
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 51
+
+state 24
+
+    (15) assign_stmt -> ID MASIG . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 53
+
+state 25
+
+    (30) expr -> LPAR . expr RPAR
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 54
+
+state 26
+
+    (31) expr -> NOT . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 55
+
+state 27
+
+    (32) expr -> NUMBER .
+
+    PLUS            reduce using rule 32 (expr -> NUMBER .)
+    MINUS           reduce using rule 32 (expr -> NUMBER .)
+    TIMES           reduce using rule 32 (expr -> NUMBER .)
+    DIVIDE          reduce using rule 32 (expr -> NUMBER .)
+    MOD             reduce using rule 32 (expr -> NUMBER .)
+    EXP             reduce using rule 32 (expr -> NUMBER .)
+    IGUAL           reduce using rule 32 (expr -> NUMBER .)
+    DIFERENTE       reduce using rule 32 (expr -> NUMBER .)
+    MAYORQ          reduce using rule 32 (expr -> NUMBER .)
+    MENORQ          reduce using rule 32 (expr -> NUMBER .)
+    MAYORIG         reduce using rule 32 (expr -> NUMBER .)
+    MENORIG         reduce using rule 32 (expr -> NUMBER .)
+    AND             reduce using rule 32 (expr -> NUMBER .)
+    OR              reduce using rule 32 (expr -> NUMBER .)
+    NEWLINE         reduce using rule 32 (expr -> NUMBER .)
+    ID              reduce using rule 32 (expr -> NUMBER .)
+    IF              reduce using rule 32 (expr -> NUMBER .)
+    WHILE           reduce using rule 32 (expr -> NUMBER .)
+    DEF             reduce using rule 32 (expr -> NUMBER .)
+    CLASS           reduce using rule 32 (expr -> NUMBER .)
+    $end            reduce using rule 32 (expr -> NUMBER .)
+    END             reduce using rule 32 (expr -> NUMBER .)
+    THEN            reduce using rule 32 (expr -> NUMBER .)
+    DO              reduce using rule 32 (expr -> NUMBER .)
+    RPAR            reduce using rule 32 (expr -> NUMBER .)
+    RCOR            reduce using rule 32 (expr -> NUMBER .)
+    COMA            reduce using rule 32 (expr -> NUMBER .)
+
+
+state 28
+
+    (33) expr -> STRING .
+
+    PLUS            reduce using rule 33 (expr -> STRING .)
+    MINUS           reduce using rule 33 (expr -> STRING .)
+    TIMES           reduce using rule 33 (expr -> STRING .)
+    DIVIDE          reduce using rule 33 (expr -> STRING .)
+    MOD             reduce using rule 33 (expr -> STRING .)
+    EXP             reduce using rule 33 (expr -> STRING .)
+    IGUAL           reduce using rule 33 (expr -> STRING .)
+    DIFERENTE       reduce using rule 33 (expr -> STRING .)
+    MAYORQ          reduce using rule 33 (expr -> STRING .)
+    MENORQ          reduce using rule 33 (expr -> STRING .)
+    MAYORIG         reduce using rule 33 (expr -> STRING .)
+    MENORIG         reduce using rule 33 (expr -> STRING .)
+    AND             reduce using rule 33 (expr -> STRING .)
+    OR              reduce using rule 33 (expr -> STRING .)
+    NEWLINE         reduce using rule 33 (expr -> STRING .)
+    ID              reduce using rule 33 (expr -> STRING .)
+    IF              reduce using rule 33 (expr -> STRING .)
+    WHILE           reduce using rule 33 (expr -> STRING .)
+    DEF             reduce using rule 33 (expr -> STRING .)
+    CLASS           reduce using rule 33 (expr -> STRING .)
+    $end            reduce using rule 33 (expr -> STRING .)
+    END             reduce using rule 33 (expr -> STRING .)
+    THEN            reduce using rule 33 (expr -> STRING .)
+    DO              reduce using rule 33 (expr -> STRING .)
+    RPAR            reduce using rule 33 (expr -> STRING .)
+    RCOR            reduce using rule 33 (expr -> STRING .)
+    COMA            reduce using rule 33 (expr -> STRING .)
+
+
+state 29
+
+    (34) expr -> TRUE .
+
+    PLUS            reduce using rule 34 (expr -> TRUE .)
+    MINUS           reduce using rule 34 (expr -> TRUE .)
+    TIMES           reduce using rule 34 (expr -> TRUE .)
+    DIVIDE          reduce using rule 34 (expr -> TRUE .)
+    MOD             reduce using rule 34 (expr -> TRUE .)
+    EXP             reduce using rule 34 (expr -> TRUE .)
+    IGUAL           reduce using rule 34 (expr -> TRUE .)
+    DIFERENTE       reduce using rule 34 (expr -> TRUE .)
+    MAYORQ          reduce using rule 34 (expr -> TRUE .)
+    MENORQ          reduce using rule 34 (expr -> TRUE .)
+    MAYORIG         reduce using rule 34 (expr -> TRUE .)
+    MENORIG         reduce using rule 34 (expr -> TRUE .)
+    AND             reduce using rule 34 (expr -> TRUE .)
+    OR              reduce using rule 34 (expr -> TRUE .)
+    NEWLINE         reduce using rule 34 (expr -> TRUE .)
+    ID              reduce using rule 34 (expr -> TRUE .)
+    IF              reduce using rule 34 (expr -> TRUE .)
+    WHILE           reduce using rule 34 (expr -> TRUE .)
+    DEF             reduce using rule 34 (expr -> TRUE .)
+    CLASS           reduce using rule 34 (expr -> TRUE .)
+    $end            reduce using rule 34 (expr -> TRUE .)
+    END             reduce using rule 34 (expr -> TRUE .)
+    THEN            reduce using rule 34 (expr -> TRUE .)
+    DO              reduce using rule 34 (expr -> TRUE .)
+    RPAR            reduce using rule 34 (expr -> TRUE .)
+    RCOR            reduce using rule 34 (expr -> TRUE .)
+    COMA            reduce using rule 34 (expr -> TRUE .)
+
+
+state 30
+
+    (35) expr -> FALSE .
+
+    PLUS            reduce using rule 35 (expr -> FALSE .)
+    MINUS           reduce using rule 35 (expr -> FALSE .)
+    TIMES           reduce using rule 35 (expr -> FALSE .)
+    DIVIDE          reduce using rule 35 (expr -> FALSE .)
+    MOD             reduce using rule 35 (expr -> FALSE .)
+    EXP             reduce using rule 35 (expr -> FALSE .)
+    IGUAL           reduce using rule 35 (expr -> FALSE .)
+    DIFERENTE       reduce using rule 35 (expr -> FALSE .)
+    MAYORQ          reduce using rule 35 (expr -> FALSE .)
+    MENORQ          reduce using rule 35 (expr -> FALSE .)
+    MAYORIG         reduce using rule 35 (expr -> FALSE .)
+    MENORIG         reduce using rule 35 (expr -> FALSE .)
+    AND             reduce using rule 35 (expr -> FALSE .)
+    OR              reduce using rule 35 (expr -> FALSE .)
+    NEWLINE         reduce using rule 35 (expr -> FALSE .)
+    ID              reduce using rule 35 (expr -> FALSE .)
+    IF              reduce using rule 35 (expr -> FALSE .)
+    WHILE           reduce using rule 35 (expr -> FALSE .)
+    DEF             reduce using rule 35 (expr -> FALSE .)
+    CLASS           reduce using rule 35 (expr -> FALSE .)
+    $end            reduce using rule 35 (expr -> FALSE .)
+    END             reduce using rule 35 (expr -> FALSE .)
+    THEN            reduce using rule 35 (expr -> FALSE .)
+    DO              reduce using rule 35 (expr -> FALSE .)
+    RPAR            reduce using rule 35 (expr -> FALSE .)
+    RCOR            reduce using rule 35 (expr -> FALSE .)
+    COMA            reduce using rule 35 (expr -> FALSE .)
+
+
+state 31
+
+    (36) expr -> NIL .
+
+    PLUS            reduce using rule 36 (expr -> NIL .)
+    MINUS           reduce using rule 36 (expr -> NIL .)
+    TIMES           reduce using rule 36 (expr -> NIL .)
+    DIVIDE          reduce using rule 36 (expr -> NIL .)
+    MOD             reduce using rule 36 (expr -> NIL .)
+    EXP             reduce using rule 36 (expr -> NIL .)
+    IGUAL           reduce using rule 36 (expr -> NIL .)
+    DIFERENTE       reduce using rule 36 (expr -> NIL .)
+    MAYORQ          reduce using rule 36 (expr -> NIL .)
+    MENORQ          reduce using rule 36 (expr -> NIL .)
+    MAYORIG         reduce using rule 36 (expr -> NIL .)
+    MENORIG         reduce using rule 36 (expr -> NIL .)
+    AND             reduce using rule 36 (expr -> NIL .)
+    OR              reduce using rule 36 (expr -> NIL .)
+    NEWLINE         reduce using rule 36 (expr -> NIL .)
+    ID              reduce using rule 36 (expr -> NIL .)
+    IF              reduce using rule 36 (expr -> NIL .)
+    WHILE           reduce using rule 36 (expr -> NIL .)
+    DEF             reduce using rule 36 (expr -> NIL .)
+    CLASS           reduce using rule 36 (expr -> NIL .)
+    $end            reduce using rule 36 (expr -> NIL .)
+    END             reduce using rule 36 (expr -> NIL .)
+    THEN            reduce using rule 36 (expr -> NIL .)
+    DO              reduce using rule 36 (expr -> NIL .)
+    RPAR            reduce using rule 36 (expr -> NIL .)
+    RCOR            reduce using rule 36 (expr -> NIL .)
+    COMA            reduce using rule 36 (expr -> NIL .)
+
+
+state 32
+
+    (39) if_stmt -> IF expr . NEWLINE statement_list END
+    (40) if_stmt -> IF expr . THEN statement_list END
+    (41) if_stmt -> IF expr . statement_list END
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (38) statement_list -> . statement_list NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    NEWLINE         shift and go to state 56
+    THEN            shift and go to state 58
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+    IGUAL           shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    MAYORQ          shift and go to state 44
+    MENORQ          shift and go to state 45
+    MAYORIG         shift and go to state 46
+    MENORIG         shift and go to state 47
+    AND             shift and go to state 48
+    OR              shift and go to state 49
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement_list                 shift and go to state 57
+    statement                      shift and go to state 3
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 33
+
+    (42) while_stmt -> WHILE expr . NEWLINE statement_list END
+    (43) while_stmt -> WHILE expr . DO statement_list END
+    (44) while_stmt -> WHILE expr . statement_list END
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (38) statement_list -> . statement_list NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    NEWLINE         shift and go to state 59
+    DO              shift and go to state 61
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+    IGUAL           shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    MAYORQ          shift and go to state 44
+    MENORQ          shift and go to state 45
+    MAYORIG         shift and go to state 46
+    MENORIG         shift and go to state 47
+    AND             shift and go to state 48
+    OR              shift and go to state 49
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement_list                 shift and go to state 60
+    statement                      shift and go to state 3
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 34
+
+    (49) func_def -> DEF ID . param_list_opt NEWLINE statement_list END
+    (50) param_list_opt -> .
+    (51) param_list_opt -> . LPAR param_list RPAR
+
+    NEWLINE         reduce using rule 50 (param_list_opt -> .)
+    LPAR            shift and go to state 63
+
+    param_list_opt                 shift and go to state 62
+
+state 35
+
+    (54) class_def -> CLASS ID . NEWLINE class_body END
+
+    NEWLINE         shift and go to state 64
+
+
+state 36
+
+    (16) expr -> expr PLUS . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 65
+
+state 37
+
+    (17) expr -> expr MINUS . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 66
+
+state 38
+
+    (18) expr -> expr TIMES . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 67
+
+state 39
+
+    (19) expr -> expr DIVIDE . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 68
+
+state 40
+
+    (20) expr -> expr MOD . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 69
+
+state 41
+
+    (21) expr -> expr EXP . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 70
+
+state 42
+
+    (22) expr -> expr IGUAL . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 71
+
+state 43
+
+    (23) expr -> expr DIFERENTE . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 72
+
+state 44
+
+    (24) expr -> expr MAYORQ . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 73
+
+state 45
+
+    (25) expr -> expr MENORQ . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 74
+
+state 46
+
+    (26) expr -> expr MAYORIG . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 75
+
+state 47
+
+    (27) expr -> expr MENORIG . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 76
+
+state 48
+
+    (28) expr -> expr AND . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 77
+
+state 49
+
+    (29) expr -> expr OR . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 78
+
+state 50
+
+    (13) input_stmt -> ID ASIG GETS .
+
+    NEWLINE         reduce using rule 13 (input_stmt -> ID ASIG GETS .)
+    ID              reduce using rule 13 (input_stmt -> ID ASIG GETS .)
+    IF              reduce using rule 13 (input_stmt -> ID ASIG GETS .)
+    WHILE           reduce using rule 13 (input_stmt -> ID ASIG GETS .)
+    DEF             reduce using rule 13 (input_stmt -> ID ASIG GETS .)
+    CLASS           reduce using rule 13 (input_stmt -> ID ASIG GETS .)
+    $end            reduce using rule 13 (input_stmt -> ID ASIG GETS .)
+    END             reduce using rule 13 (input_stmt -> ID ASIG GETS .)
+
+
+state 51
+
+    (14) assign_stmt -> ID ASIG expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    NEWLINE         reduce using rule 14 (assign_stmt -> ID ASIG expr .)
+    ID              reduce using rule 14 (assign_stmt -> ID ASIG expr .)
+    IF              reduce using rule 14 (assign_stmt -> ID ASIG expr .)
+    WHILE           reduce using rule 14 (assign_stmt -> ID ASIG expr .)
+    DEF             reduce using rule 14 (assign_stmt -> ID ASIG expr .)
+    CLASS           reduce using rule 14 (assign_stmt -> ID ASIG expr .)
+    $end            reduce using rule 14 (assign_stmt -> ID ASIG expr .)
+    END             reduce using rule 14 (assign_stmt -> ID ASIG expr .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+    IGUAL           shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    MAYORQ          shift and go to state 44
+    MENORQ          shift and go to state 45
+    MAYORIG         shift and go to state 46
+    MENORIG         shift and go to state 47
+    AND             shift and go to state 48
+    OR              shift and go to state 49
+
+
+state 52
+
+    (46) data_structure_stmt -> ID ASIG LCOR . expr_list RCOR
+    (47) expr_list -> . expr_list COMA expr
+    (48) expr_list -> . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr_list                      shift and go to state 79
+    expr                           shift and go to state 80
+
+state 53
+
+    (15) assign_stmt -> ID MASIG expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    NEWLINE         reduce using rule 15 (assign_stmt -> ID MASIG expr .)
+    ID              reduce using rule 15 (assign_stmt -> ID MASIG expr .)
+    IF              reduce using rule 15 (assign_stmt -> ID MASIG expr .)
+    WHILE           reduce using rule 15 (assign_stmt -> ID MASIG expr .)
+    DEF             reduce using rule 15 (assign_stmt -> ID MASIG expr .)
+    CLASS           reduce using rule 15 (assign_stmt -> ID MASIG expr .)
+    $end            reduce using rule 15 (assign_stmt -> ID MASIG expr .)
+    END             reduce using rule 15 (assign_stmt -> ID MASIG expr .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+    IGUAL           shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    MAYORQ          shift and go to state 44
+    MENORQ          shift and go to state 45
+    MAYORIG         shift and go to state 46
+    MENORIG         shift and go to state 47
+    AND             shift and go to state 48
+    OR              shift and go to state 49
+
+
+state 54
+
+    (30) expr -> LPAR expr . RPAR
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    RPAR            shift and go to state 81
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+    IGUAL           shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    MAYORQ          shift and go to state 44
+    MENORQ          shift and go to state 45
+    MAYORIG         shift and go to state 46
+    MENORIG         shift and go to state 47
+    AND             shift and go to state 48
+    OR              shift and go to state 49
+
+
+state 55
+
+    (31) expr -> NOT expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    PLUS            reduce using rule 31 (expr -> NOT expr .)
+    MINUS           reduce using rule 31 (expr -> NOT expr .)
+    TIMES           reduce using rule 31 (expr -> NOT expr .)
+    DIVIDE          reduce using rule 31 (expr -> NOT expr .)
+    MOD             reduce using rule 31 (expr -> NOT expr .)
+    EXP             reduce using rule 31 (expr -> NOT expr .)
+    IGUAL           reduce using rule 31 (expr -> NOT expr .)
+    DIFERENTE       reduce using rule 31 (expr -> NOT expr .)
+    MAYORQ          reduce using rule 31 (expr -> NOT expr .)
+    MENORQ          reduce using rule 31 (expr -> NOT expr .)
+    MAYORIG         reduce using rule 31 (expr -> NOT expr .)
+    MENORIG         reduce using rule 31 (expr -> NOT expr .)
+    AND             reduce using rule 31 (expr -> NOT expr .)
+    OR              reduce using rule 31 (expr -> NOT expr .)
+    NEWLINE         reduce using rule 31 (expr -> NOT expr .)
+    ID              reduce using rule 31 (expr -> NOT expr .)
+    IF              reduce using rule 31 (expr -> NOT expr .)
+    WHILE           reduce using rule 31 (expr -> NOT expr .)
+    DEF             reduce using rule 31 (expr -> NOT expr .)
+    CLASS           reduce using rule 31 (expr -> NOT expr .)
+    $end            reduce using rule 31 (expr -> NOT expr .)
+    END             reduce using rule 31 (expr -> NOT expr .)
+    THEN            reduce using rule 31 (expr -> NOT expr .)
+    DO              reduce using rule 31 (expr -> NOT expr .)
+    RPAR            reduce using rule 31 (expr -> NOT expr .)
+    RCOR            reduce using rule 31 (expr -> NOT expr .)
+    COMA            reduce using rule 31 (expr -> NOT expr .)
+
+  ! PLUS            [ shift and go to state 36 ]
+  ! MINUS           [ shift and go to state 37 ]
+  ! TIMES           [ shift and go to state 38 ]
+  ! DIVIDE          [ shift and go to state 39 ]
+  ! MOD             [ shift and go to state 40 ]
+  ! EXP             [ shift and go to state 41 ]
+  ! IGUAL           [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! MAYORQ          [ shift and go to state 44 ]
+  ! MENORQ          [ shift and go to state 45 ]
+  ! MAYORIG         [ shift and go to state 46 ]
+  ! MENORIG         [ shift and go to state 47 ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 56
+
+    (39) if_stmt -> IF expr NEWLINE . statement_list END
+    (45) statement -> NEWLINE . statement
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (38) statement_list -> . statement_list NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    NEWLINE         shift and go to state 4
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement_list                 shift and go to state 82
+    statement                      shift and go to state 83
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 57
+
+    (41) if_stmt -> IF expr statement_list . END
+    (2) statement_list -> statement_list . statement
+    (38) statement_list -> statement_list . NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    END             shift and go to state 84
+    NEWLINE         shift and go to state 19
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement                      shift and go to state 18
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 58
+
+    (40) if_stmt -> IF expr THEN . statement_list END
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (38) statement_list -> . statement_list NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    NEWLINE         shift and go to state 4
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement_list                 shift and go to state 85
+    statement                      shift and go to state 3
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 59
+
+    (42) while_stmt -> WHILE expr NEWLINE . statement_list END
+    (45) statement -> NEWLINE . statement
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (38) statement_list -> . statement_list NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    NEWLINE         shift and go to state 4
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement_list                 shift and go to state 86
+    statement                      shift and go to state 83
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 60
+
+    (44) while_stmt -> WHILE expr statement_list . END
+    (2) statement_list -> statement_list . statement
+    (38) statement_list -> statement_list . NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    END             shift and go to state 87
+    NEWLINE         shift and go to state 19
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement                      shift and go to state 18
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 61
+
+    (43) while_stmt -> WHILE expr DO . statement_list END
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (38) statement_list -> . statement_list NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    NEWLINE         shift and go to state 4
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement_list                 shift and go to state 88
+    statement                      shift and go to state 3
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 62
+
+    (49) func_def -> DEF ID param_list_opt . NEWLINE statement_list END
+
+    NEWLINE         shift and go to state 89
+
+
+state 63
+
+    (51) param_list_opt -> LPAR . param_list RPAR
+    (52) param_list -> . param_list COMA ID
+    (53) param_list -> . ID
+
+    ID              shift and go to state 91
+
+    param_list                     shift and go to state 90
+
+state 64
+
+    (54) class_def -> CLASS ID NEWLINE . class_body END
+    (55) class_body -> . statement_list
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (38) statement_list -> . statement_list NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    NEWLINE         shift and go to state 4
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    class_body                     shift and go to state 92
+    statement_list                 shift and go to state 93
+    statement                      shift and go to state 3
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 65
+
+    (16) expr -> expr PLUS expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    PLUS            reduce using rule 16 (expr -> expr PLUS expr .)
+    MINUS           reduce using rule 16 (expr -> expr PLUS expr .)
+    IGUAL           reduce using rule 16 (expr -> expr PLUS expr .)
+    DIFERENTE       reduce using rule 16 (expr -> expr PLUS expr .)
+    MAYORQ          reduce using rule 16 (expr -> expr PLUS expr .)
+    MENORQ          reduce using rule 16 (expr -> expr PLUS expr .)
+    MAYORIG         reduce using rule 16 (expr -> expr PLUS expr .)
+    MENORIG         reduce using rule 16 (expr -> expr PLUS expr .)
+    AND             reduce using rule 16 (expr -> expr PLUS expr .)
+    OR              reduce using rule 16 (expr -> expr PLUS expr .)
+    NEWLINE         reduce using rule 16 (expr -> expr PLUS expr .)
+    ID              reduce using rule 16 (expr -> expr PLUS expr .)
+    IF              reduce using rule 16 (expr -> expr PLUS expr .)
+    WHILE           reduce using rule 16 (expr -> expr PLUS expr .)
+    DEF             reduce using rule 16 (expr -> expr PLUS expr .)
+    CLASS           reduce using rule 16 (expr -> expr PLUS expr .)
+    $end            reduce using rule 16 (expr -> expr PLUS expr .)
+    END             reduce using rule 16 (expr -> expr PLUS expr .)
+    THEN            reduce using rule 16 (expr -> expr PLUS expr .)
+    DO              reduce using rule 16 (expr -> expr PLUS expr .)
+    RPAR            reduce using rule 16 (expr -> expr PLUS expr .)
+    RCOR            reduce using rule 16 (expr -> expr PLUS expr .)
+    COMA            reduce using rule 16 (expr -> expr PLUS expr .)
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+
+  ! TIMES           [ reduce using rule 16 (expr -> expr PLUS expr .) ]
+  ! DIVIDE          [ reduce using rule 16 (expr -> expr PLUS expr .) ]
+  ! MOD             [ reduce using rule 16 (expr -> expr PLUS expr .) ]
+  ! EXP             [ reduce using rule 16 (expr -> expr PLUS expr .) ]
+  ! PLUS            [ shift and go to state 36 ]
+  ! MINUS           [ shift and go to state 37 ]
+  ! IGUAL           [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! MAYORQ          [ shift and go to state 44 ]
+  ! MENORQ          [ shift and go to state 45 ]
+  ! MAYORIG         [ shift and go to state 46 ]
+  ! MENORIG         [ shift and go to state 47 ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 66
+
+    (17) expr -> expr MINUS expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    PLUS            reduce using rule 17 (expr -> expr MINUS expr .)
+    MINUS           reduce using rule 17 (expr -> expr MINUS expr .)
+    IGUAL           reduce using rule 17 (expr -> expr MINUS expr .)
+    DIFERENTE       reduce using rule 17 (expr -> expr MINUS expr .)
+    MAYORQ          reduce using rule 17 (expr -> expr MINUS expr .)
+    MENORQ          reduce using rule 17 (expr -> expr MINUS expr .)
+    MAYORIG         reduce using rule 17 (expr -> expr MINUS expr .)
+    MENORIG         reduce using rule 17 (expr -> expr MINUS expr .)
+    AND             reduce using rule 17 (expr -> expr MINUS expr .)
+    OR              reduce using rule 17 (expr -> expr MINUS expr .)
+    NEWLINE         reduce using rule 17 (expr -> expr MINUS expr .)
+    ID              reduce using rule 17 (expr -> expr MINUS expr .)
+    IF              reduce using rule 17 (expr -> expr MINUS expr .)
+    WHILE           reduce using rule 17 (expr -> expr MINUS expr .)
+    DEF             reduce using rule 17 (expr -> expr MINUS expr .)
+    CLASS           reduce using rule 17 (expr -> expr MINUS expr .)
+    $end            reduce using rule 17 (expr -> expr MINUS expr .)
+    END             reduce using rule 17 (expr -> expr MINUS expr .)
+    THEN            reduce using rule 17 (expr -> expr MINUS expr .)
+    DO              reduce using rule 17 (expr -> expr MINUS expr .)
+    RPAR            reduce using rule 17 (expr -> expr MINUS expr .)
+    RCOR            reduce using rule 17 (expr -> expr MINUS expr .)
+    COMA            reduce using rule 17 (expr -> expr MINUS expr .)
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+
+  ! TIMES           [ reduce using rule 17 (expr -> expr MINUS expr .) ]
+  ! DIVIDE          [ reduce using rule 17 (expr -> expr MINUS expr .) ]
+  ! MOD             [ reduce using rule 17 (expr -> expr MINUS expr .) ]
+  ! EXP             [ reduce using rule 17 (expr -> expr MINUS expr .) ]
+  ! PLUS            [ shift and go to state 36 ]
+  ! MINUS           [ shift and go to state 37 ]
+  ! IGUAL           [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! MAYORQ          [ shift and go to state 44 ]
+  ! MENORQ          [ shift and go to state 45 ]
+  ! MAYORIG         [ shift and go to state 46 ]
+  ! MENORIG         [ shift and go to state 47 ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 67
+
+    (18) expr -> expr TIMES expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    PLUS            reduce using rule 18 (expr -> expr TIMES expr .)
+    MINUS           reduce using rule 18 (expr -> expr TIMES expr .)
+    TIMES           reduce using rule 18 (expr -> expr TIMES expr .)
+    DIVIDE          reduce using rule 18 (expr -> expr TIMES expr .)
+    MOD             reduce using rule 18 (expr -> expr TIMES expr .)
+    IGUAL           reduce using rule 18 (expr -> expr TIMES expr .)
+    DIFERENTE       reduce using rule 18 (expr -> expr TIMES expr .)
+    MAYORQ          reduce using rule 18 (expr -> expr TIMES expr .)
+    MENORQ          reduce using rule 18 (expr -> expr TIMES expr .)
+    MAYORIG         reduce using rule 18 (expr -> expr TIMES expr .)
+    MENORIG         reduce using rule 18 (expr -> expr TIMES expr .)
+    AND             reduce using rule 18 (expr -> expr TIMES expr .)
+    OR              reduce using rule 18 (expr -> expr TIMES expr .)
+    NEWLINE         reduce using rule 18 (expr -> expr TIMES expr .)
+    ID              reduce using rule 18 (expr -> expr TIMES expr .)
+    IF              reduce using rule 18 (expr -> expr TIMES expr .)
+    WHILE           reduce using rule 18 (expr -> expr TIMES expr .)
+    DEF             reduce using rule 18 (expr -> expr TIMES expr .)
+    CLASS           reduce using rule 18 (expr -> expr TIMES expr .)
+    $end            reduce using rule 18 (expr -> expr TIMES expr .)
+    END             reduce using rule 18 (expr -> expr TIMES expr .)
+    THEN            reduce using rule 18 (expr -> expr TIMES expr .)
+    DO              reduce using rule 18 (expr -> expr TIMES expr .)
+    RPAR            reduce using rule 18 (expr -> expr TIMES expr .)
+    RCOR            reduce using rule 18 (expr -> expr TIMES expr .)
+    COMA            reduce using rule 18 (expr -> expr TIMES expr .)
+    EXP             shift and go to state 41
+
+  ! EXP             [ reduce using rule 18 (expr -> expr TIMES expr .) ]
+  ! PLUS            [ shift and go to state 36 ]
+  ! MINUS           [ shift and go to state 37 ]
+  ! TIMES           [ shift and go to state 38 ]
+  ! DIVIDE          [ shift and go to state 39 ]
+  ! MOD             [ shift and go to state 40 ]
+  ! IGUAL           [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! MAYORQ          [ shift and go to state 44 ]
+  ! MENORQ          [ shift and go to state 45 ]
+  ! MAYORIG         [ shift and go to state 46 ]
+  ! MENORIG         [ shift and go to state 47 ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 68
+
+    (19) expr -> expr DIVIDE expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    PLUS            reduce using rule 19 (expr -> expr DIVIDE expr .)
+    MINUS           reduce using rule 19 (expr -> expr DIVIDE expr .)
+    TIMES           reduce using rule 19 (expr -> expr DIVIDE expr .)
+    DIVIDE          reduce using rule 19 (expr -> expr DIVIDE expr .)
+    MOD             reduce using rule 19 (expr -> expr DIVIDE expr .)
+    IGUAL           reduce using rule 19 (expr -> expr DIVIDE expr .)
+    DIFERENTE       reduce using rule 19 (expr -> expr DIVIDE expr .)
+    MAYORQ          reduce using rule 19 (expr -> expr DIVIDE expr .)
+    MENORQ          reduce using rule 19 (expr -> expr DIVIDE expr .)
+    MAYORIG         reduce using rule 19 (expr -> expr DIVIDE expr .)
+    MENORIG         reduce using rule 19 (expr -> expr DIVIDE expr .)
+    AND             reduce using rule 19 (expr -> expr DIVIDE expr .)
+    OR              reduce using rule 19 (expr -> expr DIVIDE expr .)
+    NEWLINE         reduce using rule 19 (expr -> expr DIVIDE expr .)
+    ID              reduce using rule 19 (expr -> expr DIVIDE expr .)
+    IF              reduce using rule 19 (expr -> expr DIVIDE expr .)
+    WHILE           reduce using rule 19 (expr -> expr DIVIDE expr .)
+    DEF             reduce using rule 19 (expr -> expr DIVIDE expr .)
+    CLASS           reduce using rule 19 (expr -> expr DIVIDE expr .)
+    $end            reduce using rule 19 (expr -> expr DIVIDE expr .)
+    END             reduce using rule 19 (expr -> expr DIVIDE expr .)
+    THEN            reduce using rule 19 (expr -> expr DIVIDE expr .)
+    DO              reduce using rule 19 (expr -> expr DIVIDE expr .)
+    RPAR            reduce using rule 19 (expr -> expr DIVIDE expr .)
+    RCOR            reduce using rule 19 (expr -> expr DIVIDE expr .)
+    COMA            reduce using rule 19 (expr -> expr DIVIDE expr .)
+    EXP             shift and go to state 41
+
+  ! EXP             [ reduce using rule 19 (expr -> expr DIVIDE expr .) ]
+  ! PLUS            [ shift and go to state 36 ]
+  ! MINUS           [ shift and go to state 37 ]
+  ! TIMES           [ shift and go to state 38 ]
+  ! DIVIDE          [ shift and go to state 39 ]
+  ! MOD             [ shift and go to state 40 ]
+  ! IGUAL           [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! MAYORQ          [ shift and go to state 44 ]
+  ! MENORQ          [ shift and go to state 45 ]
+  ! MAYORIG         [ shift and go to state 46 ]
+  ! MENORIG         [ shift and go to state 47 ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 69
+
+    (20) expr -> expr MOD expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    PLUS            reduce using rule 20 (expr -> expr MOD expr .)
+    MINUS           reduce using rule 20 (expr -> expr MOD expr .)
+    TIMES           reduce using rule 20 (expr -> expr MOD expr .)
+    DIVIDE          reduce using rule 20 (expr -> expr MOD expr .)
+    MOD             reduce using rule 20 (expr -> expr MOD expr .)
+    IGUAL           reduce using rule 20 (expr -> expr MOD expr .)
+    DIFERENTE       reduce using rule 20 (expr -> expr MOD expr .)
+    MAYORQ          reduce using rule 20 (expr -> expr MOD expr .)
+    MENORQ          reduce using rule 20 (expr -> expr MOD expr .)
+    MAYORIG         reduce using rule 20 (expr -> expr MOD expr .)
+    MENORIG         reduce using rule 20 (expr -> expr MOD expr .)
+    AND             reduce using rule 20 (expr -> expr MOD expr .)
+    OR              reduce using rule 20 (expr -> expr MOD expr .)
+    NEWLINE         reduce using rule 20 (expr -> expr MOD expr .)
+    ID              reduce using rule 20 (expr -> expr MOD expr .)
+    IF              reduce using rule 20 (expr -> expr MOD expr .)
+    WHILE           reduce using rule 20 (expr -> expr MOD expr .)
+    DEF             reduce using rule 20 (expr -> expr MOD expr .)
+    CLASS           reduce using rule 20 (expr -> expr MOD expr .)
+    $end            reduce using rule 20 (expr -> expr MOD expr .)
+    END             reduce using rule 20 (expr -> expr MOD expr .)
+    THEN            reduce using rule 20 (expr -> expr MOD expr .)
+    DO              reduce using rule 20 (expr -> expr MOD expr .)
+    RPAR            reduce using rule 20 (expr -> expr MOD expr .)
+    RCOR            reduce using rule 20 (expr -> expr MOD expr .)
+    COMA            reduce using rule 20 (expr -> expr MOD expr .)
+    EXP             shift and go to state 41
+
+  ! EXP             [ reduce using rule 20 (expr -> expr MOD expr .) ]
+  ! PLUS            [ shift and go to state 36 ]
+  ! MINUS           [ shift and go to state 37 ]
+  ! TIMES           [ shift and go to state 38 ]
+  ! DIVIDE          [ shift and go to state 39 ]
+  ! MOD             [ shift and go to state 40 ]
+  ! IGUAL           [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! MAYORQ          [ shift and go to state 44 ]
+  ! MENORQ          [ shift and go to state 45 ]
+  ! MAYORIG         [ shift and go to state 46 ]
+  ! MENORIG         [ shift and go to state 47 ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 70
+
+    (21) expr -> expr EXP expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    PLUS            reduce using rule 21 (expr -> expr EXP expr .)
+    MINUS           reduce using rule 21 (expr -> expr EXP expr .)
+    TIMES           reduce using rule 21 (expr -> expr EXP expr .)
+    DIVIDE          reduce using rule 21 (expr -> expr EXP expr .)
+    MOD             reduce using rule 21 (expr -> expr EXP expr .)
+    IGUAL           reduce using rule 21 (expr -> expr EXP expr .)
+    DIFERENTE       reduce using rule 21 (expr -> expr EXP expr .)
+    MAYORQ          reduce using rule 21 (expr -> expr EXP expr .)
+    MENORQ          reduce using rule 21 (expr -> expr EXP expr .)
+    MAYORIG         reduce using rule 21 (expr -> expr EXP expr .)
+    MENORIG         reduce using rule 21 (expr -> expr EXP expr .)
+    AND             reduce using rule 21 (expr -> expr EXP expr .)
+    OR              reduce using rule 21 (expr -> expr EXP expr .)
+    NEWLINE         reduce using rule 21 (expr -> expr EXP expr .)
+    ID              reduce using rule 21 (expr -> expr EXP expr .)
+    IF              reduce using rule 21 (expr -> expr EXP expr .)
+    WHILE           reduce using rule 21 (expr -> expr EXP expr .)
+    DEF             reduce using rule 21 (expr -> expr EXP expr .)
+    CLASS           reduce using rule 21 (expr -> expr EXP expr .)
+    $end            reduce using rule 21 (expr -> expr EXP expr .)
+    END             reduce using rule 21 (expr -> expr EXP expr .)
+    THEN            reduce using rule 21 (expr -> expr EXP expr .)
+    DO              reduce using rule 21 (expr -> expr EXP expr .)
+    RPAR            reduce using rule 21 (expr -> expr EXP expr .)
+    RCOR            reduce using rule 21 (expr -> expr EXP expr .)
+    COMA            reduce using rule 21 (expr -> expr EXP expr .)
+    EXP             shift and go to state 41
+
+  ! EXP             [ reduce using rule 21 (expr -> expr EXP expr .) ]
+  ! PLUS            [ shift and go to state 36 ]
+  ! MINUS           [ shift and go to state 37 ]
+  ! TIMES           [ shift and go to state 38 ]
+  ! DIVIDE          [ shift and go to state 39 ]
+  ! MOD             [ shift and go to state 40 ]
+  ! IGUAL           [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! MAYORQ          [ shift and go to state 44 ]
+  ! MENORQ          [ shift and go to state 45 ]
+  ! MAYORIG         [ shift and go to state 46 ]
+  ! MENORIG         [ shift and go to state 47 ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 71
+
+    (22) expr -> expr IGUAL expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    IGUAL           reduce using rule 22 (expr -> expr IGUAL expr .)
+    DIFERENTE       reduce using rule 22 (expr -> expr IGUAL expr .)
+    MAYORQ          reduce using rule 22 (expr -> expr IGUAL expr .)
+    MENORQ          reduce using rule 22 (expr -> expr IGUAL expr .)
+    MAYORIG         reduce using rule 22 (expr -> expr IGUAL expr .)
+    MENORIG         reduce using rule 22 (expr -> expr IGUAL expr .)
+    AND             reduce using rule 22 (expr -> expr IGUAL expr .)
+    OR              reduce using rule 22 (expr -> expr IGUAL expr .)
+    NEWLINE         reduce using rule 22 (expr -> expr IGUAL expr .)
+    ID              reduce using rule 22 (expr -> expr IGUAL expr .)
+    IF              reduce using rule 22 (expr -> expr IGUAL expr .)
+    WHILE           reduce using rule 22 (expr -> expr IGUAL expr .)
+    DEF             reduce using rule 22 (expr -> expr IGUAL expr .)
+    CLASS           reduce using rule 22 (expr -> expr IGUAL expr .)
+    $end            reduce using rule 22 (expr -> expr IGUAL expr .)
+    END             reduce using rule 22 (expr -> expr IGUAL expr .)
+    THEN            reduce using rule 22 (expr -> expr IGUAL expr .)
+    DO              reduce using rule 22 (expr -> expr IGUAL expr .)
+    RPAR            reduce using rule 22 (expr -> expr IGUAL expr .)
+    RCOR            reduce using rule 22 (expr -> expr IGUAL expr .)
+    COMA            reduce using rule 22 (expr -> expr IGUAL expr .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+
+  ! PLUS            [ reduce using rule 22 (expr -> expr IGUAL expr .) ]
+  ! MINUS           [ reduce using rule 22 (expr -> expr IGUAL expr .) ]
+  ! TIMES           [ reduce using rule 22 (expr -> expr IGUAL expr .) ]
+  ! DIVIDE          [ reduce using rule 22 (expr -> expr IGUAL expr .) ]
+  ! MOD             [ reduce using rule 22 (expr -> expr IGUAL expr .) ]
+  ! EXP             [ reduce using rule 22 (expr -> expr IGUAL expr .) ]
+  ! IGUAL           [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! MAYORQ          [ shift and go to state 44 ]
+  ! MENORQ          [ shift and go to state 45 ]
+  ! MAYORIG         [ shift and go to state 46 ]
+  ! MENORIG         [ shift and go to state 47 ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 72
+
+    (23) expr -> expr DIFERENTE expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    IGUAL           reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    DIFERENTE       reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    MAYORQ          reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    MENORQ          reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    MAYORIG         reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    MENORIG         reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    AND             reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    OR              reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    NEWLINE         reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    ID              reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    IF              reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    WHILE           reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    DEF             reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    CLASS           reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    $end            reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    END             reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    THEN            reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    DO              reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    RPAR            reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    RCOR            reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    COMA            reduce using rule 23 (expr -> expr DIFERENTE expr .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+
+  ! PLUS            [ reduce using rule 23 (expr -> expr DIFERENTE expr .) ]
+  ! MINUS           [ reduce using rule 23 (expr -> expr DIFERENTE expr .) ]
+  ! TIMES           [ reduce using rule 23 (expr -> expr DIFERENTE expr .) ]
+  ! DIVIDE          [ reduce using rule 23 (expr -> expr DIFERENTE expr .) ]
+  ! MOD             [ reduce using rule 23 (expr -> expr DIFERENTE expr .) ]
+  ! EXP             [ reduce using rule 23 (expr -> expr DIFERENTE expr .) ]
+  ! IGUAL           [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! MAYORQ          [ shift and go to state 44 ]
+  ! MENORQ          [ shift and go to state 45 ]
+  ! MAYORIG         [ shift and go to state 46 ]
+  ! MENORIG         [ shift and go to state 47 ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 73
+
+    (24) expr -> expr MAYORQ expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    IGUAL           reduce using rule 24 (expr -> expr MAYORQ expr .)
+    DIFERENTE       reduce using rule 24 (expr -> expr MAYORQ expr .)
+    MAYORQ          reduce using rule 24 (expr -> expr MAYORQ expr .)
+    MENORQ          reduce using rule 24 (expr -> expr MAYORQ expr .)
+    MAYORIG         reduce using rule 24 (expr -> expr MAYORQ expr .)
+    MENORIG         reduce using rule 24 (expr -> expr MAYORQ expr .)
+    AND             reduce using rule 24 (expr -> expr MAYORQ expr .)
+    OR              reduce using rule 24 (expr -> expr MAYORQ expr .)
+    NEWLINE         reduce using rule 24 (expr -> expr MAYORQ expr .)
+    ID              reduce using rule 24 (expr -> expr MAYORQ expr .)
+    IF              reduce using rule 24 (expr -> expr MAYORQ expr .)
+    WHILE           reduce using rule 24 (expr -> expr MAYORQ expr .)
+    DEF             reduce using rule 24 (expr -> expr MAYORQ expr .)
+    CLASS           reduce using rule 24 (expr -> expr MAYORQ expr .)
+    $end            reduce using rule 24 (expr -> expr MAYORQ expr .)
+    END             reduce using rule 24 (expr -> expr MAYORQ expr .)
+    THEN            reduce using rule 24 (expr -> expr MAYORQ expr .)
+    DO              reduce using rule 24 (expr -> expr MAYORQ expr .)
+    RPAR            reduce using rule 24 (expr -> expr MAYORQ expr .)
+    RCOR            reduce using rule 24 (expr -> expr MAYORQ expr .)
+    COMA            reduce using rule 24 (expr -> expr MAYORQ expr .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+
+  ! PLUS            [ reduce using rule 24 (expr -> expr MAYORQ expr .) ]
+  ! MINUS           [ reduce using rule 24 (expr -> expr MAYORQ expr .) ]
+  ! TIMES           [ reduce using rule 24 (expr -> expr MAYORQ expr .) ]
+  ! DIVIDE          [ reduce using rule 24 (expr -> expr MAYORQ expr .) ]
+  ! MOD             [ reduce using rule 24 (expr -> expr MAYORQ expr .) ]
+  ! EXP             [ reduce using rule 24 (expr -> expr MAYORQ expr .) ]
+  ! IGUAL           [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! MAYORQ          [ shift and go to state 44 ]
+  ! MENORQ          [ shift and go to state 45 ]
+  ! MAYORIG         [ shift and go to state 46 ]
+  ! MENORIG         [ shift and go to state 47 ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 74
+
+    (25) expr -> expr MENORQ expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    IGUAL           reduce using rule 25 (expr -> expr MENORQ expr .)
+    DIFERENTE       reduce using rule 25 (expr -> expr MENORQ expr .)
+    MAYORQ          reduce using rule 25 (expr -> expr MENORQ expr .)
+    MENORQ          reduce using rule 25 (expr -> expr MENORQ expr .)
+    MAYORIG         reduce using rule 25 (expr -> expr MENORQ expr .)
+    MENORIG         reduce using rule 25 (expr -> expr MENORQ expr .)
+    AND             reduce using rule 25 (expr -> expr MENORQ expr .)
+    OR              reduce using rule 25 (expr -> expr MENORQ expr .)
+    NEWLINE         reduce using rule 25 (expr -> expr MENORQ expr .)
+    ID              reduce using rule 25 (expr -> expr MENORQ expr .)
+    IF              reduce using rule 25 (expr -> expr MENORQ expr .)
+    WHILE           reduce using rule 25 (expr -> expr MENORQ expr .)
+    DEF             reduce using rule 25 (expr -> expr MENORQ expr .)
+    CLASS           reduce using rule 25 (expr -> expr MENORQ expr .)
+    $end            reduce using rule 25 (expr -> expr MENORQ expr .)
+    END             reduce using rule 25 (expr -> expr MENORQ expr .)
+    THEN            reduce using rule 25 (expr -> expr MENORQ expr .)
+    DO              reduce using rule 25 (expr -> expr MENORQ expr .)
+    RPAR            reduce using rule 25 (expr -> expr MENORQ expr .)
+    RCOR            reduce using rule 25 (expr -> expr MENORQ expr .)
+    COMA            reduce using rule 25 (expr -> expr MENORQ expr .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+
+  ! PLUS            [ reduce using rule 25 (expr -> expr MENORQ expr .) ]
+  ! MINUS           [ reduce using rule 25 (expr -> expr MENORQ expr .) ]
+  ! TIMES           [ reduce using rule 25 (expr -> expr MENORQ expr .) ]
+  ! DIVIDE          [ reduce using rule 25 (expr -> expr MENORQ expr .) ]
+  ! MOD             [ reduce using rule 25 (expr -> expr MENORQ expr .) ]
+  ! EXP             [ reduce using rule 25 (expr -> expr MENORQ expr .) ]
+  ! IGUAL           [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! MAYORQ          [ shift and go to state 44 ]
+  ! MENORQ          [ shift and go to state 45 ]
+  ! MAYORIG         [ shift and go to state 46 ]
+  ! MENORIG         [ shift and go to state 47 ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 75
+
+    (26) expr -> expr MAYORIG expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    IGUAL           reduce using rule 26 (expr -> expr MAYORIG expr .)
+    DIFERENTE       reduce using rule 26 (expr -> expr MAYORIG expr .)
+    MAYORQ          reduce using rule 26 (expr -> expr MAYORIG expr .)
+    MENORQ          reduce using rule 26 (expr -> expr MAYORIG expr .)
+    MAYORIG         reduce using rule 26 (expr -> expr MAYORIG expr .)
+    MENORIG         reduce using rule 26 (expr -> expr MAYORIG expr .)
+    AND             reduce using rule 26 (expr -> expr MAYORIG expr .)
+    OR              reduce using rule 26 (expr -> expr MAYORIG expr .)
+    NEWLINE         reduce using rule 26 (expr -> expr MAYORIG expr .)
+    ID              reduce using rule 26 (expr -> expr MAYORIG expr .)
+    IF              reduce using rule 26 (expr -> expr MAYORIG expr .)
+    WHILE           reduce using rule 26 (expr -> expr MAYORIG expr .)
+    DEF             reduce using rule 26 (expr -> expr MAYORIG expr .)
+    CLASS           reduce using rule 26 (expr -> expr MAYORIG expr .)
+    $end            reduce using rule 26 (expr -> expr MAYORIG expr .)
+    END             reduce using rule 26 (expr -> expr MAYORIG expr .)
+    THEN            reduce using rule 26 (expr -> expr MAYORIG expr .)
+    DO              reduce using rule 26 (expr -> expr MAYORIG expr .)
+    RPAR            reduce using rule 26 (expr -> expr MAYORIG expr .)
+    RCOR            reduce using rule 26 (expr -> expr MAYORIG expr .)
+    COMA            reduce using rule 26 (expr -> expr MAYORIG expr .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+
+  ! PLUS            [ reduce using rule 26 (expr -> expr MAYORIG expr .) ]
+  ! MINUS           [ reduce using rule 26 (expr -> expr MAYORIG expr .) ]
+  ! TIMES           [ reduce using rule 26 (expr -> expr MAYORIG expr .) ]
+  ! DIVIDE          [ reduce using rule 26 (expr -> expr MAYORIG expr .) ]
+  ! MOD             [ reduce using rule 26 (expr -> expr MAYORIG expr .) ]
+  ! EXP             [ reduce using rule 26 (expr -> expr MAYORIG expr .) ]
+  ! IGUAL           [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! MAYORQ          [ shift and go to state 44 ]
+  ! MENORQ          [ shift and go to state 45 ]
+  ! MAYORIG         [ shift and go to state 46 ]
+  ! MENORIG         [ shift and go to state 47 ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 76
+
+    (27) expr -> expr MENORIG expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    IGUAL           reduce using rule 27 (expr -> expr MENORIG expr .)
+    DIFERENTE       reduce using rule 27 (expr -> expr MENORIG expr .)
+    MAYORQ          reduce using rule 27 (expr -> expr MENORIG expr .)
+    MENORQ          reduce using rule 27 (expr -> expr MENORIG expr .)
+    MAYORIG         reduce using rule 27 (expr -> expr MENORIG expr .)
+    MENORIG         reduce using rule 27 (expr -> expr MENORIG expr .)
+    AND             reduce using rule 27 (expr -> expr MENORIG expr .)
+    OR              reduce using rule 27 (expr -> expr MENORIG expr .)
+    NEWLINE         reduce using rule 27 (expr -> expr MENORIG expr .)
+    ID              reduce using rule 27 (expr -> expr MENORIG expr .)
+    IF              reduce using rule 27 (expr -> expr MENORIG expr .)
+    WHILE           reduce using rule 27 (expr -> expr MENORIG expr .)
+    DEF             reduce using rule 27 (expr -> expr MENORIG expr .)
+    CLASS           reduce using rule 27 (expr -> expr MENORIG expr .)
+    $end            reduce using rule 27 (expr -> expr MENORIG expr .)
+    END             reduce using rule 27 (expr -> expr MENORIG expr .)
+    THEN            reduce using rule 27 (expr -> expr MENORIG expr .)
+    DO              reduce using rule 27 (expr -> expr MENORIG expr .)
+    RPAR            reduce using rule 27 (expr -> expr MENORIG expr .)
+    RCOR            reduce using rule 27 (expr -> expr MENORIG expr .)
+    COMA            reduce using rule 27 (expr -> expr MENORIG expr .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+
+  ! PLUS            [ reduce using rule 27 (expr -> expr MENORIG expr .) ]
+  ! MINUS           [ reduce using rule 27 (expr -> expr MENORIG expr .) ]
+  ! TIMES           [ reduce using rule 27 (expr -> expr MENORIG expr .) ]
+  ! DIVIDE          [ reduce using rule 27 (expr -> expr MENORIG expr .) ]
+  ! MOD             [ reduce using rule 27 (expr -> expr MENORIG expr .) ]
+  ! EXP             [ reduce using rule 27 (expr -> expr MENORIG expr .) ]
+  ! IGUAL           [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! MAYORQ          [ shift and go to state 44 ]
+  ! MENORQ          [ shift and go to state 45 ]
+  ! MAYORIG         [ shift and go to state 46 ]
+  ! MENORIG         [ shift and go to state 47 ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 77
+
+    (28) expr -> expr AND expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    AND             reduce using rule 28 (expr -> expr AND expr .)
+    OR              reduce using rule 28 (expr -> expr AND expr .)
+    NEWLINE         reduce using rule 28 (expr -> expr AND expr .)
+    ID              reduce using rule 28 (expr -> expr AND expr .)
+    IF              reduce using rule 28 (expr -> expr AND expr .)
+    WHILE           reduce using rule 28 (expr -> expr AND expr .)
+    DEF             reduce using rule 28 (expr -> expr AND expr .)
+    CLASS           reduce using rule 28 (expr -> expr AND expr .)
+    $end            reduce using rule 28 (expr -> expr AND expr .)
+    END             reduce using rule 28 (expr -> expr AND expr .)
+    THEN            reduce using rule 28 (expr -> expr AND expr .)
+    DO              reduce using rule 28 (expr -> expr AND expr .)
+    RPAR            reduce using rule 28 (expr -> expr AND expr .)
+    RCOR            reduce using rule 28 (expr -> expr AND expr .)
+    COMA            reduce using rule 28 (expr -> expr AND expr .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+    IGUAL           shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    MAYORQ          shift and go to state 44
+    MENORQ          shift and go to state 45
+    MAYORIG         shift and go to state 46
+    MENORIG         shift and go to state 47
+
+  ! PLUS            [ reduce using rule 28 (expr -> expr AND expr .) ]
+  ! MINUS           [ reduce using rule 28 (expr -> expr AND expr .) ]
+  ! TIMES           [ reduce using rule 28 (expr -> expr AND expr .) ]
+  ! DIVIDE          [ reduce using rule 28 (expr -> expr AND expr .) ]
+  ! MOD             [ reduce using rule 28 (expr -> expr AND expr .) ]
+  ! EXP             [ reduce using rule 28 (expr -> expr AND expr .) ]
+  ! IGUAL           [ reduce using rule 28 (expr -> expr AND expr .) ]
+  ! DIFERENTE       [ reduce using rule 28 (expr -> expr AND expr .) ]
+  ! MAYORQ          [ reduce using rule 28 (expr -> expr AND expr .) ]
+  ! MENORQ          [ reduce using rule 28 (expr -> expr AND expr .) ]
+  ! MAYORIG         [ reduce using rule 28 (expr -> expr AND expr .) ]
+  ! MENORIG         [ reduce using rule 28 (expr -> expr AND expr .) ]
+  ! AND             [ shift and go to state 48 ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 78
+
+    (29) expr -> expr OR expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    OR              reduce using rule 29 (expr -> expr OR expr .)
+    NEWLINE         reduce using rule 29 (expr -> expr OR expr .)
+    ID              reduce using rule 29 (expr -> expr OR expr .)
+    IF              reduce using rule 29 (expr -> expr OR expr .)
+    WHILE           reduce using rule 29 (expr -> expr OR expr .)
+    DEF             reduce using rule 29 (expr -> expr OR expr .)
+    CLASS           reduce using rule 29 (expr -> expr OR expr .)
+    $end            reduce using rule 29 (expr -> expr OR expr .)
+    END             reduce using rule 29 (expr -> expr OR expr .)
+    THEN            reduce using rule 29 (expr -> expr OR expr .)
+    DO              reduce using rule 29 (expr -> expr OR expr .)
+    RPAR            reduce using rule 29 (expr -> expr OR expr .)
+    RCOR            reduce using rule 29 (expr -> expr OR expr .)
+    COMA            reduce using rule 29 (expr -> expr OR expr .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+    IGUAL           shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    MAYORQ          shift and go to state 44
+    MENORQ          shift and go to state 45
+    MAYORIG         shift and go to state 46
+    MENORIG         shift and go to state 47
+    AND             shift and go to state 48
+
+  ! PLUS            [ reduce using rule 29 (expr -> expr OR expr .) ]
+  ! MINUS           [ reduce using rule 29 (expr -> expr OR expr .) ]
+  ! TIMES           [ reduce using rule 29 (expr -> expr OR expr .) ]
+  ! DIVIDE          [ reduce using rule 29 (expr -> expr OR expr .) ]
+  ! MOD             [ reduce using rule 29 (expr -> expr OR expr .) ]
+  ! EXP             [ reduce using rule 29 (expr -> expr OR expr .) ]
+  ! IGUAL           [ reduce using rule 29 (expr -> expr OR expr .) ]
+  ! DIFERENTE       [ reduce using rule 29 (expr -> expr OR expr .) ]
+  ! MAYORQ          [ reduce using rule 29 (expr -> expr OR expr .) ]
+  ! MENORQ          [ reduce using rule 29 (expr -> expr OR expr .) ]
+  ! MAYORIG         [ reduce using rule 29 (expr -> expr OR expr .) ]
+  ! MENORIG         [ reduce using rule 29 (expr -> expr OR expr .) ]
+  ! AND             [ reduce using rule 29 (expr -> expr OR expr .) ]
+  ! OR              [ shift and go to state 49 ]
+
+
+state 79
+
+    (46) data_structure_stmt -> ID ASIG LCOR expr_list . RCOR
+    (47) expr_list -> expr_list . COMA expr
+
+    RCOR            shift and go to state 94
+    COMA            shift and go to state 95
+
+
+state 80
+
+    (48) expr_list -> expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    RCOR            reduce using rule 48 (expr_list -> expr .)
+    COMA            reduce using rule 48 (expr_list -> expr .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+    IGUAL           shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    MAYORQ          shift and go to state 44
+    MENORQ          shift and go to state 45
+    MAYORIG         shift and go to state 46
+    MENORIG         shift and go to state 47
+    AND             shift and go to state 48
+    OR              shift and go to state 49
+
+
+state 81
+
+    (30) expr -> LPAR expr RPAR .
+
+    PLUS            reduce using rule 30 (expr -> LPAR expr RPAR .)
+    MINUS           reduce using rule 30 (expr -> LPAR expr RPAR .)
+    TIMES           reduce using rule 30 (expr -> LPAR expr RPAR .)
+    DIVIDE          reduce using rule 30 (expr -> LPAR expr RPAR .)
+    MOD             reduce using rule 30 (expr -> LPAR expr RPAR .)
+    EXP             reduce using rule 30 (expr -> LPAR expr RPAR .)
+    IGUAL           reduce using rule 30 (expr -> LPAR expr RPAR .)
+    DIFERENTE       reduce using rule 30 (expr -> LPAR expr RPAR .)
+    MAYORQ          reduce using rule 30 (expr -> LPAR expr RPAR .)
+    MENORQ          reduce using rule 30 (expr -> LPAR expr RPAR .)
+    MAYORIG         reduce using rule 30 (expr -> LPAR expr RPAR .)
+    MENORIG         reduce using rule 30 (expr -> LPAR expr RPAR .)
+    AND             reduce using rule 30 (expr -> LPAR expr RPAR .)
+    OR              reduce using rule 30 (expr -> LPAR expr RPAR .)
+    NEWLINE         reduce using rule 30 (expr -> LPAR expr RPAR .)
+    ID              reduce using rule 30 (expr -> LPAR expr RPAR .)
+    IF              reduce using rule 30 (expr -> LPAR expr RPAR .)
+    WHILE           reduce using rule 30 (expr -> LPAR expr RPAR .)
+    DEF             reduce using rule 30 (expr -> LPAR expr RPAR .)
+    CLASS           reduce using rule 30 (expr -> LPAR expr RPAR .)
+    $end            reduce using rule 30 (expr -> LPAR expr RPAR .)
+    END             reduce using rule 30 (expr -> LPAR expr RPAR .)
+    THEN            reduce using rule 30 (expr -> LPAR expr RPAR .)
+    DO              reduce using rule 30 (expr -> LPAR expr RPAR .)
+    RPAR            reduce using rule 30 (expr -> LPAR expr RPAR .)
+    RCOR            reduce using rule 30 (expr -> LPAR expr RPAR .)
+    COMA            reduce using rule 30 (expr -> LPAR expr RPAR .)
+
+
+state 82
+
+    (39) if_stmt -> IF expr NEWLINE statement_list . END
+    (2) statement_list -> statement_list . statement
+    (38) statement_list -> statement_list . NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    END             shift and go to state 96
+    NEWLINE         shift and go to state 19
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement                      shift and go to state 18
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 83
+
+    (45) statement -> NEWLINE statement .
+    (3) statement_list -> statement .
+
+  ! reduce/reduce conflict for END resolved using rule 3 (statement_list -> statement .)
+  ! reduce/reduce conflict for NEWLINE resolved using rule 3 (statement_list -> statement .)
+  ! reduce/reduce conflict for ID resolved using rule 3 (statement_list -> statement .)
+  ! reduce/reduce conflict for IF resolved using rule 3 (statement_list -> statement .)
+  ! reduce/reduce conflict for WHILE resolved using rule 3 (statement_list -> statement .)
+  ! reduce/reduce conflict for DEF resolved using rule 3 (statement_list -> statement .)
+  ! reduce/reduce conflict for CLASS resolved using rule 3 (statement_list -> statement .)
+    END             reduce using rule 3 (statement_list -> statement .)
+    NEWLINE         reduce using rule 3 (statement_list -> statement .)
+    ID              reduce using rule 3 (statement_list -> statement .)
+    IF              reduce using rule 3 (statement_list -> statement .)
+    WHILE           reduce using rule 3 (statement_list -> statement .)
+    DEF             reduce using rule 3 (statement_list -> statement .)
+    CLASS           reduce using rule 3 (statement_list -> statement .)
+
+  ! END             [ reduce using rule 45 (statement -> NEWLINE statement .) ]
+  ! NEWLINE         [ reduce using rule 45 (statement -> NEWLINE statement .) ]
+  ! ID              [ reduce using rule 45 (statement -> NEWLINE statement .) ]
+  ! IF              [ reduce using rule 45 (statement -> NEWLINE statement .) ]
+  ! WHILE           [ reduce using rule 45 (statement -> NEWLINE statement .) ]
+  ! DEF             [ reduce using rule 45 (statement -> NEWLINE statement .) ]
+  ! CLASS           [ reduce using rule 45 (statement -> NEWLINE statement .) ]
+
+
+state 84
+
+    (41) if_stmt -> IF expr statement_list END .
+
+    NEWLINE         reduce using rule 41 (if_stmt -> IF expr statement_list END .)
+    ID              reduce using rule 41 (if_stmt -> IF expr statement_list END .)
+    IF              reduce using rule 41 (if_stmt -> IF expr statement_list END .)
+    WHILE           reduce using rule 41 (if_stmt -> IF expr statement_list END .)
+    DEF             reduce using rule 41 (if_stmt -> IF expr statement_list END .)
+    CLASS           reduce using rule 41 (if_stmt -> IF expr statement_list END .)
+    $end            reduce using rule 41 (if_stmt -> IF expr statement_list END .)
+    END             reduce using rule 41 (if_stmt -> IF expr statement_list END .)
+
+
+state 85
+
+    (40) if_stmt -> IF expr THEN statement_list . END
+    (2) statement_list -> statement_list . statement
+    (38) statement_list -> statement_list . NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    END             shift and go to state 97
+    NEWLINE         shift and go to state 19
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement                      shift and go to state 18
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 86
+
+    (42) while_stmt -> WHILE expr NEWLINE statement_list . END
+    (2) statement_list -> statement_list . statement
+    (38) statement_list -> statement_list . NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    END             shift and go to state 98
+    NEWLINE         shift and go to state 19
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement                      shift and go to state 18
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 87
+
+    (44) while_stmt -> WHILE expr statement_list END .
+
+    NEWLINE         reduce using rule 44 (while_stmt -> WHILE expr statement_list END .)
+    ID              reduce using rule 44 (while_stmt -> WHILE expr statement_list END .)
+    IF              reduce using rule 44 (while_stmt -> WHILE expr statement_list END .)
+    WHILE           reduce using rule 44 (while_stmt -> WHILE expr statement_list END .)
+    DEF             reduce using rule 44 (while_stmt -> WHILE expr statement_list END .)
+    CLASS           reduce using rule 44 (while_stmt -> WHILE expr statement_list END .)
+    $end            reduce using rule 44 (while_stmt -> WHILE expr statement_list END .)
+    END             reduce using rule 44 (while_stmt -> WHILE expr statement_list END .)
+
+
+state 88
+
+    (43) while_stmt -> WHILE expr DO statement_list . END
+    (2) statement_list -> statement_list . statement
+    (38) statement_list -> statement_list . NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    END             shift and go to state 99
+    NEWLINE         shift and go to state 19
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement                      shift and go to state 18
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 89
+
+    (49) func_def -> DEF ID param_list_opt NEWLINE . statement_list END
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (38) statement_list -> . statement_list NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    NEWLINE         shift and go to state 4
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement_list                 shift and go to state 100
+    statement                      shift and go to state 3
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 90
+
+    (51) param_list_opt -> LPAR param_list . RPAR
+    (52) param_list -> param_list . COMA ID
+
+    RPAR            shift and go to state 101
+    COMA            shift and go to state 102
+
+
+state 91
+
+    (53) param_list -> ID .
+
+    RPAR            reduce using rule 53 (param_list -> ID .)
+    COMA            reduce using rule 53 (param_list -> ID .)
+
+
+state 92
+
+    (54) class_def -> CLASS ID NEWLINE class_body . END
+
+    END             shift and go to state 103
+
+
+state 93
+
+    (55) class_body -> statement_list .
+    (2) statement_list -> statement_list . statement
+    (38) statement_list -> statement_list . NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    END             reduce using rule 55 (class_body -> statement_list .)
+    NEWLINE         shift and go to state 19
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement                      shift and go to state 18
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 94
+
+    (46) data_structure_stmt -> ID ASIG LCOR expr_list RCOR .
+
+    NEWLINE         reduce using rule 46 (data_structure_stmt -> ID ASIG LCOR expr_list RCOR .)
+    ID              reduce using rule 46 (data_structure_stmt -> ID ASIG LCOR expr_list RCOR .)
+    IF              reduce using rule 46 (data_structure_stmt -> ID ASIG LCOR expr_list RCOR .)
+    WHILE           reduce using rule 46 (data_structure_stmt -> ID ASIG LCOR expr_list RCOR .)
+    DEF             reduce using rule 46 (data_structure_stmt -> ID ASIG LCOR expr_list RCOR .)
+    CLASS           reduce using rule 46 (data_structure_stmt -> ID ASIG LCOR expr_list RCOR .)
+    $end            reduce using rule 46 (data_structure_stmt -> ID ASIG LCOR expr_list RCOR .)
+    END             reduce using rule 46 (data_structure_stmt -> ID ASIG LCOR expr_list RCOR .)
+
+
+state 95
+
+    (47) expr_list -> expr_list COMA . expr
+    (16) expr -> . expr PLUS expr
+    (17) expr -> . expr MINUS expr
+    (18) expr -> . expr TIMES expr
+    (19) expr -> . expr DIVIDE expr
+    (20) expr -> . expr MOD expr
+    (21) expr -> . expr EXP expr
+    (22) expr -> . expr IGUAL expr
+    (23) expr -> . expr DIFERENTE expr
+    (24) expr -> . expr MAYORQ expr
+    (25) expr -> . expr MENORQ expr
+    (26) expr -> . expr MAYORIG expr
+    (27) expr -> . expr MENORIG expr
+    (28) expr -> . expr AND expr
+    (29) expr -> . expr OR expr
+    (30) expr -> . LPAR expr RPAR
+    (31) expr -> . NOT expr
+    (32) expr -> . NUMBER
+    (33) expr -> . STRING
+    (34) expr -> . TRUE
+    (35) expr -> . FALSE
+    (36) expr -> . NIL
+    (37) expr -> . ID
+
+    LPAR            shift and go to state 25
+    NOT             shift and go to state 26
+    NUMBER          shift and go to state 27
+    STRING          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NIL             shift and go to state 31
+    ID              shift and go to state 21
+
+    expr                           shift and go to state 104
+
+state 96
+
+    (39) if_stmt -> IF expr NEWLINE statement_list END .
+
+    NEWLINE         reduce using rule 39 (if_stmt -> IF expr NEWLINE statement_list END .)
+    ID              reduce using rule 39 (if_stmt -> IF expr NEWLINE statement_list END .)
+    IF              reduce using rule 39 (if_stmt -> IF expr NEWLINE statement_list END .)
+    WHILE           reduce using rule 39 (if_stmt -> IF expr NEWLINE statement_list END .)
+    DEF             reduce using rule 39 (if_stmt -> IF expr NEWLINE statement_list END .)
+    CLASS           reduce using rule 39 (if_stmt -> IF expr NEWLINE statement_list END .)
+    $end            reduce using rule 39 (if_stmt -> IF expr NEWLINE statement_list END .)
+    END             reduce using rule 39 (if_stmt -> IF expr NEWLINE statement_list END .)
+
+
+state 97
+
+    (40) if_stmt -> IF expr THEN statement_list END .
+
+    NEWLINE         reduce using rule 40 (if_stmt -> IF expr THEN statement_list END .)
+    ID              reduce using rule 40 (if_stmt -> IF expr THEN statement_list END .)
+    IF              reduce using rule 40 (if_stmt -> IF expr THEN statement_list END .)
+    WHILE           reduce using rule 40 (if_stmt -> IF expr THEN statement_list END .)
+    DEF             reduce using rule 40 (if_stmt -> IF expr THEN statement_list END .)
+    CLASS           reduce using rule 40 (if_stmt -> IF expr THEN statement_list END .)
+    $end            reduce using rule 40 (if_stmt -> IF expr THEN statement_list END .)
+    END             reduce using rule 40 (if_stmt -> IF expr THEN statement_list END .)
+
+
+state 98
+
+    (42) while_stmt -> WHILE expr NEWLINE statement_list END .
+
+    NEWLINE         reduce using rule 42 (while_stmt -> WHILE expr NEWLINE statement_list END .)
+    ID              reduce using rule 42 (while_stmt -> WHILE expr NEWLINE statement_list END .)
+    IF              reduce using rule 42 (while_stmt -> WHILE expr NEWLINE statement_list END .)
+    WHILE           reduce using rule 42 (while_stmt -> WHILE expr NEWLINE statement_list END .)
+    DEF             reduce using rule 42 (while_stmt -> WHILE expr NEWLINE statement_list END .)
+    CLASS           reduce using rule 42 (while_stmt -> WHILE expr NEWLINE statement_list END .)
+    $end            reduce using rule 42 (while_stmt -> WHILE expr NEWLINE statement_list END .)
+    END             reduce using rule 42 (while_stmt -> WHILE expr NEWLINE statement_list END .)
+
+
+state 99
+
+    (43) while_stmt -> WHILE expr DO statement_list END .
+
+    NEWLINE         reduce using rule 43 (while_stmt -> WHILE expr DO statement_list END .)
+    ID              reduce using rule 43 (while_stmt -> WHILE expr DO statement_list END .)
+    IF              reduce using rule 43 (while_stmt -> WHILE expr DO statement_list END .)
+    WHILE           reduce using rule 43 (while_stmt -> WHILE expr DO statement_list END .)
+    DEF             reduce using rule 43 (while_stmt -> WHILE expr DO statement_list END .)
+    CLASS           reduce using rule 43 (while_stmt -> WHILE expr DO statement_list END .)
+    $end            reduce using rule 43 (while_stmt -> WHILE expr DO statement_list END .)
+    END             reduce using rule 43 (while_stmt -> WHILE expr DO statement_list END .)
+
+
+state 100
+
+    (49) func_def -> DEF ID param_list_opt NEWLINE statement_list . END
+    (2) statement_list -> statement_list . statement
+    (38) statement_list -> statement_list . NEWLINE
+    (4) statement -> . print_stmt
+    (5) statement -> . input_stmt
+    (6) statement -> . assign_stmt
+    (7) statement -> . if_stmt
+    (8) statement -> . while_stmt
+    (9) statement -> . func_def
+    (10) statement -> . class_def
+    (11) statement -> . data_structure_stmt
+    (45) statement -> . NEWLINE statement
+    (12) print_stmt -> . ID expr
+    (13) input_stmt -> . ID ASIG GETS
+    (14) assign_stmt -> . ID ASIG expr
+    (15) assign_stmt -> . ID MASIG expr
+    (39) if_stmt -> . IF expr NEWLINE statement_list END
+    (40) if_stmt -> . IF expr THEN statement_list END
+    (41) if_stmt -> . IF expr statement_list END
+    (42) while_stmt -> . WHILE expr NEWLINE statement_list END
+    (43) while_stmt -> . WHILE expr DO statement_list END
+    (44) while_stmt -> . WHILE expr statement_list END
+    (49) func_def -> . DEF ID param_list_opt NEWLINE statement_list END
+    (54) class_def -> . CLASS ID NEWLINE class_body END
+    (46) data_structure_stmt -> . ID ASIG LCOR expr_list RCOR
+
+    END             shift and go to state 105
+    NEWLINE         shift and go to state 19
+    ID              shift and go to state 13
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    DEF             shift and go to state 16
+    CLASS           shift and go to state 17
+
+    statement                      shift and go to state 18
+    print_stmt                     shift and go to state 5
+    input_stmt                     shift and go to state 6
+    assign_stmt                    shift and go to state 7
+    if_stmt                        shift and go to state 8
+    while_stmt                     shift and go to state 9
+    func_def                       shift and go to state 10
+    class_def                      shift and go to state 11
+    data_structure_stmt            shift and go to state 12
+
+state 101
+
+    (51) param_list_opt -> LPAR param_list RPAR .
+
+    NEWLINE         reduce using rule 51 (param_list_opt -> LPAR param_list RPAR .)
+
+
+state 102
+
+    (52) param_list -> param_list COMA . ID
+
+    ID              shift and go to state 106
+
+
+state 103
+
+    (54) class_def -> CLASS ID NEWLINE class_body END .
+
+    NEWLINE         reduce using rule 54 (class_def -> CLASS ID NEWLINE class_body END .)
+    ID              reduce using rule 54 (class_def -> CLASS ID NEWLINE class_body END .)
+    IF              reduce using rule 54 (class_def -> CLASS ID NEWLINE class_body END .)
+    WHILE           reduce using rule 54 (class_def -> CLASS ID NEWLINE class_body END .)
+    DEF             reduce using rule 54 (class_def -> CLASS ID NEWLINE class_body END .)
+    CLASS           reduce using rule 54 (class_def -> CLASS ID NEWLINE class_body END .)
+    $end            reduce using rule 54 (class_def -> CLASS ID NEWLINE class_body END .)
+    END             reduce using rule 54 (class_def -> CLASS ID NEWLINE class_body END .)
+
+
+state 104
+
+    (47) expr_list -> expr_list COMA expr .
+    (16) expr -> expr . PLUS expr
+    (17) expr -> expr . MINUS expr
+    (18) expr -> expr . TIMES expr
+    (19) expr -> expr . DIVIDE expr
+    (20) expr -> expr . MOD expr
+    (21) expr -> expr . EXP expr
+    (22) expr -> expr . IGUAL expr
+    (23) expr -> expr . DIFERENTE expr
+    (24) expr -> expr . MAYORQ expr
+    (25) expr -> expr . MENORQ expr
+    (26) expr -> expr . MAYORIG expr
+    (27) expr -> expr . MENORIG expr
+    (28) expr -> expr . AND expr
+    (29) expr -> expr . OR expr
+
+    RCOR            reduce using rule 47 (expr_list -> expr_list COMA expr .)
+    COMA            reduce using rule 47 (expr_list -> expr_list COMA expr .)
+    PLUS            shift and go to state 36
+    MINUS           shift and go to state 37
+    TIMES           shift and go to state 38
+    DIVIDE          shift and go to state 39
+    MOD             shift and go to state 40
+    EXP             shift and go to state 41
+    IGUAL           shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    MAYORQ          shift and go to state 44
+    MENORQ          shift and go to state 45
+    MAYORIG         shift and go to state 46
+    MENORIG         shift and go to state 47
+    AND             shift and go to state 48
+    OR              shift and go to state 49
+
+
+state 105
+
+    (49) func_def -> DEF ID param_list_opt NEWLINE statement_list END .
+
+    NEWLINE         reduce using rule 49 (func_def -> DEF ID param_list_opt NEWLINE statement_list END .)
+    ID              reduce using rule 49 (func_def -> DEF ID param_list_opt NEWLINE statement_list END .)
+    IF              reduce using rule 49 (func_def -> DEF ID param_list_opt NEWLINE statement_list END .)
+    WHILE           reduce using rule 49 (func_def -> DEF ID param_list_opt NEWLINE statement_list END .)
+    DEF             reduce using rule 49 (func_def -> DEF ID param_list_opt NEWLINE statement_list END .)
+    CLASS           reduce using rule 49 (func_def -> DEF ID param_list_opt NEWLINE statement_list END .)
+    $end            reduce using rule 49 (func_def -> DEF ID param_list_opt NEWLINE statement_list END .)
+    END             reduce using rule 49 (func_def -> DEF ID param_list_opt NEWLINE statement_list END .)
+
+
+state 106
+
+    (52) param_list -> param_list COMA ID .
+
+    RPAR            reduce using rule 52 (param_list -> param_list COMA ID .)
+    COMA            reduce using rule 52 (param_list -> param_list COMA ID .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for NEWLINE in state 19 resolved as shift
+WARNING: shift/reduce conflict for ID in state 19 resolved as shift
+WARNING: shift/reduce conflict for IF in state 19 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 19 resolved as shift
+WARNING: shift/reduce conflict for DEF in state 19 resolved as shift
+WARNING: shift/reduce conflict for CLASS in state 19 resolved as shift
+WARNING: reduce/reduce conflict in state 83 resolved using rule (statement_list -> statement)
+WARNING: rejected rule (statement -> NEWLINE statement) in state 83

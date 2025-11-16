@@ -1,0 +1,29 @@
+ANÁLISIS SINTÁCTICO (Ruby)
+Usuario Git : aepino01
+Fecha       : 2025-11-16 04:33:20.834469
+------------------------------------------------------------
+ERRORES SINTÁCTICOS:
+
+Error sintáctico cerca de '
+
+' en la línea 2
+Error sintáctico cerca de '
+' en la línea 4
+Error sintáctico cerca de '
+
+' en la línea 5
+Error sintáctico cerca de '
+
+' en la línea 7
+Error sintáctico cerca de '
+
+' en la línea 9
+Error sintáctico cerca de '
+' en la línea 15
+Error sintáctico cerca de '
+' en la línea 19
+Error sintáctico cerca de '
+' en la línea 20
+Error sintáctico cerca de '
+
+' en la línea 23
