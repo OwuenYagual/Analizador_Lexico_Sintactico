@@ -215,3 +215,50 @@ def p_while_stmt(p):
         p[0] = ("while", p[2], p[3])
 
 
+# ============================================================
+# ===================== INTEGRANTE 3 ==========================
+# Joaquin Guerra Aviles
+# ============================================================
+
+# ---------- ARRAYS ----------
+def p_data_structure_array(p):
+    'data_structure_stmt : ID ASIG LCOR expr_list RCOR'
+    p[0] = ("assign_array", p[1], p[4])
+
+def p_expr_list_multiple(p):
+    'expr_list : expr_list COMA expr'
+    p[0] = p[1] + [p[3]]
+
+def p_expr_list_single(p):
+    'expr_list : expr'
+    p[0] = [p[1]]
+
+# ---------- FUNCIONES ----------
+def p_func_def(p):
+    'func_def : DEF ID param_list_opt NEWLINE statement_list END'
+    p[0] = ("func_def", p[2], p[3], p[5])
+
+def p_param_list_opt_empty(p):
+    'param_list_opt : '
+    p[0] = []
+
+def p_param_list_opt(p):
+    'param_list_opt : LPAR param_list RPAR'
+    p[0] = p[2]
+
+def p_param_list_multi(p):
+    'param_list : param_list COMA ID'
+    p[0] = p[1] + [p[3]]
+
+def p_param_list_single(p):
+    'param_list : ID'
+    p[0] = [p[1]]
+
+# ---------- CLASES ----------
+def p_class_def(p):
+    'class_def : CLASS ID NEWLINE class_body END'
+    p[0] = ("class_def", p[2], p[4])
+
+def p_class_body(p):
+    'class_body : statement_list'
+    p[0] = p[1]
