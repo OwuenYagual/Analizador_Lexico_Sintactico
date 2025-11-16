@@ -158,7 +158,6 @@ def construir_parser():
 # Andres Pino G.
 # ============================================================
 
-# ---------- EXPRESIONES ARITMÉTICAS / RELACIONALES / LÓGICAS ----------
 def p_expr_binop(p):
     '''expr : expr PLUS expr
             | expr MINUS expr
