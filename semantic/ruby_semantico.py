@@ -5,7 +5,8 @@
 
 import re
 import sys
-from logg_semantico import escribir_log
+from logg_semantico import agregar_error, guardar_log
+
 
 
 class RubySemanticAnalyzer:
@@ -271,5 +272,9 @@ if __name__ == "__main__":
     analizador = RubySemanticAnalyzer()
     errores = analizador.analizar(archivo_rb)
 
-    escribir_log(usuario_git, errores)
+    # Agregar errores al logger
+    for err in errores:
+        agregar_error(err)
+
+    guardar_log(usuario_git)
     print("Análisis semántico terminado.")
