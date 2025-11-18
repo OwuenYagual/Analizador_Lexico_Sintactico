@@ -1,0 +1,7 @@
+ANÁLISIS SINTÁCTICO (Ruby)
+Usuario Git : OwuenYagual
+Fecha       : 2025-11-17 22:22:06.618681
+------------------------------------------------------------
+ERRORES SINTÁCTICOS:
+
+Sin errores sintácticos.

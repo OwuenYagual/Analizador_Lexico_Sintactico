@@ -1,0 +1,14 @@
+ANÁLISIS SINTÁCTICO (Ruby)
+Usuario Git : OwuenYagual
+Fecha       : 2025-11-17 22:21:53.674527
+------------------------------------------------------------
+ERRORES SINTÁCTICOS:
+
+Error sintáctico cerca de '
+
+' en la línea 27
+Error sintáctico cerca de '
+
+' en la línea 32
+Error sintáctico cerca de '
+' en la línea 38
