@@ -137,9 +137,72 @@ class RubySemanticAnalyzer:
 
 
     # --------------------------------------------------------------
-    # Integrante3
+    # Integrante3: Joaquin Guerra
+    #   - Regla 3: Operaciones permitidas
+    #   - Regla 4: Conversión válida de tipos
     # --------------------------------------------------------------
+    def verificar_operaciones(self, expresion):
+        """
+        Regla Semántica 3:
+        Verifica que las operaciones se realicen entre variables o literales compatibles.
+        """
+        match = re.match(r"(.+)\s*([\+\-\*\/])\s*(.+)", expresion)
+        if not match:
+            return
 
+        op1, operador, op2 = match.groups()
+        op1, op2 = op1.strip(), op2.strip()
+
+        tipo1 = self.inferir_tipo_literal(op1) if op1 not in self.variables else self.variables[op1]
+        tipo2 = self.inferir_tipo_literal(op2) if op2 not in self.variables else self.variables[op2]
+
+        if tipo1 == "desconocido" or tipo2 == "desconocido":
+            return
+
+        tipos_numericos = {"int", "float"}
+
+        if operador in {"+", "-", "*", "/"}:
+
+            # string + string permitido
+            if operador == "+" and tipo1 == "string" and tipo2 == "string":
+                return
+
+            # numérico permitido
+            if tipo1 in tipos_numericos and tipo2 in tipos_numericos:
+                return
+
+            # caso incompatible
+            self.reportar_error(
+                f"Línea {self.linea_actual}: operación inválida entre '{tipo1}' y '{tipo2}' usando '{operador}'."
+            )
+
+    def verificar_conversion(self, expresion):
+        """
+        Regla Semántica 4:
+        Verifica que las conversiones como to_i, to_f, to_s sean válidas
+        según el tipo del valor.
+        """
+        match = re.match(r"(\w+|\'.*?\'|\".*?\")\.(to_i|to_f|to_s)", expresion)
+        if not match:
+            return
+
+        valor, metodo = match.groups()
+
+        tipo_valor = self.inferir_tipo_literal(valor) if valor not in self.variables else self.variables[valor]
+
+        # to_i y to_f → requieren valores numéricos o strings numéricos
+        if metodo in {"to_i", "to_f"}:
+            if tipo_valor not in {"int", "float", "string"}:
+                self.reportar_error(
+                    f"Línea {self.linea_actual}: conversión inválida '{metodo}' para tipo '{tipo_valor}'."
+                )
+                return
+
+            # string debe ser numérico
+            if tipo_valor == "string" and not re.fullmatch(r"['\"]\d+(\.\d+)?['\"]", valor):
+                self.reportar_error(
+                    f"Línea {self.linea_actual}: no se puede convertir '{valor}' mediante {metodo}, contenido no numérico."
+                )
 
     # --------------------------------------------------------------
     # Utilidades comunes
@@ -177,6 +240,9 @@ class RubySemanticAnalyzer:
                     self.registrar_variable(var, tipo)
 
                 self.asignacion_tipo(var, val)
+                # reglas -> operaciones-conversion
+                self.verificar_operaciones(val)
+                self.verificar_conversion(val)
                 continue
 
             # Ej: x += 1
