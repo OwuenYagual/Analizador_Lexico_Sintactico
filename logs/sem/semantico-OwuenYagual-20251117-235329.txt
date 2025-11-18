@@ -1,0 +1,5 @@
+ERRORES SEMÁNTICOS DETECTADOS:
+Línea 14: identificador inválido 'if', es una palabra reservada.
+Línea 15: identificador inválido '3abc'.
+Línea 27: no se puede convertir '"abc"' mediante to_i, contenido no numérico.
+Línea 30: conversión inválida 'to_f' para tipo 'bool'.
