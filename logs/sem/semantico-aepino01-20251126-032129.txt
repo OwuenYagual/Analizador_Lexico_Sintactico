@@ -1,0 +1,2 @@
+ERRORES SEMÁNTICOS DETECTADOS:
+Línea 6: operación inválida dentro del bucle entre 'string' y 'int'.

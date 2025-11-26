@@ -14,6 +14,11 @@ class RubySemanticAnalyzer:
         self.variables = {}        # nombre → tipo (ej: "x": "int", "nombre": "string")
         self.errores = []          # lista de errores semánticos
         self.linea_actual = 0
+        self.funciones = {}  
+        self.funcion_actual = None
+        self.iterador_actual = None
+        self.tipo_iterador = None
+
 
         # Lista básica de palabras reservadas de Ruby
         self.palabras_reservadas = {
@@ -132,10 +137,79 @@ class RubySemanticAnalyzer:
         # Si es consistente, no hay nada que hacer.
 
     # --------------------------------------------------------------
-    # Integrante2
+    # Andres Pino
     # --------------------------------------------------------------
+    #   ️   - Regla 5: Verificación de tipo de retorno en funciones
+    def registrar_funcion(self, nombre, tipo_retorno):
+        """
+        Registra una función con su tipo de retorno esperado.
+        """
+        self.funciones[nombre] = tipo_retorno
 
 
+    def verificar_retorno_funcion(self, expresion):
+        """
+        Regla Semántica 5:
+        Verifica que el tipo del return coincida con el tipo esperado.
+        """
+        if self.funcion_actual is None:
+            return
+
+        tipo_retorno = self.inferir_tipo_literal(expresion)
+        tipo_esperado = self.funciones.get(self.funcion_actual)
+
+        if tipo_esperado and tipo_retorno != "desconocido":
+            if tipo_retorno != tipo_esperado:
+                self.reportar_error(
+                    f"Línea {self.linea_actual}: la función '{self.funcion_actual}' "
+                    f"debe retornar '{tipo_esperado}' pero retorna '{tipo_retorno}'."
+                )
+    #Regla: Verificación de tipos en bucles e iteradores
+    def verificar_tipos_en_bucle(self, linea):
+        """
+        Regla:
+        Los bucles e iteradores deben recorrer elementos
+        con tipos compatibles con las operaciones del bloque.
+        """
+
+        # Detectar each do |x|
+        match_each = re.match(r"(\w+)\.each\s+do\s+\|(\w+)\|", linea)
+        if match_each:
+            coleccion, iterador = match_each.groups()
+
+            # Guardar contexto del iterador
+            self.iterador_actual = iterador
+
+            # Simular tipo de los elementos
+            if "int" in coleccion:
+                self.tipo_iterador = "int"
+            else:
+                self.tipo_iterador = "string"
+
+            return
+
+        # Si estamos dentro de un iterador, validar operaciones
+        if hasattr(self, "iterador_actual") and self.iterador_actual:
+
+            # Buscar operaciones tipo: x + 1, x - 2, etc.
+            match_op = re.match(r".*(\w+)\s*([\+\-\*\/])\s*(\w+).*", linea)
+            if match_op:
+                op1, operador, op2 = match_op.groups()
+
+                if op1 == self.iterador_actual:
+                    tipo1 = self.tipo_iterador
+                else:
+                    tipo1 = self.inferir_tipo_literal(op1)
+
+                tipo2 = self.inferir_tipo_literal(op2)
+
+                # Aritmética solo válida para números
+                if operador in {"+", "-", "*", "/"}:
+                    if tipo1 == "string" or tipo2 == "string":
+                        self.reportar_error(
+                            f"Línea {self.linea_actual}: operación inválida dentro del bucle "
+                            f"entre '{tipo1}' y '{tipo2}'."
+                        )
 
     # --------------------------------------------------------------
     # Integrante3: Joaquin Guerra
@@ -220,10 +294,56 @@ class RubySemanticAnalyzer:
 
         for i, linea in enumerate(lineas, start=1):
             self.linea_actual = i
+            
+
+            # -------- ANOTACION DE TIPO DE RETORNO --------
+            match_return_type = re.match(r"#\s*@return\s+(\w+)", linea)
+            if match_return_type:
+                tipo = match_return_type.group(1)
+                # Guardamos provisionalmente hasta que aparezca el def
+                tipo_retorno_temp = tipo
+                self.tipo_retorno_temp = tipo_retorno_temp
+                continue
 
             # Ignorar líneas vacías y comentarios simples
             if linea.strip().startswith("#") or linea.strip() == "":
                 continue
+            
+            self.verificar_tipos_en_bucle(linea)
+
+
+
+            # -------- INICIO FUNCION --------
+            match_def = re.match(r"def\s+(\w+)", linea)
+            if match_def:
+                nombre_funcion = match_def.group(1)
+                self.funcion_actual = nombre_funcion
+
+                # Registrar la función con tipo si existía antes
+                if hasattr(self, "tipo_retorno_temp"):
+                    self.registrar_funcion(nombre_funcion, self.tipo_retorno_temp)
+                    del self.tipo_retorno_temp
+
+                continue
+
+
+            # -------- FIN FUNCION --------
+            if linea.strip() == "end":
+                if hasattr(self, "iterador_actual"):
+                    self.iterador_actual = None
+                    self.tipo_iterador = None
+
+                self.funcion_actual = None
+                continue
+
+
+            # -------- RETURN --------
+            match_return = re.match(r"\s*return\s+(.+)", linea)
+            if match_return:
+                valor = match_return.group(1).strip()
+                self.verificar_retorno_funcion(valor)
+                continue
+
 
             # Ej: x = 10
             match_asign = re.match(r"(\w+)\s*=\s*(.+)", linea)
