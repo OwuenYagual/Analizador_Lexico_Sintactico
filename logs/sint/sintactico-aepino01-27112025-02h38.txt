@@ -1,0 +1,7 @@
+ANÁLISIS SINTÁCTICO (Ruby)
+Usuario Git : aepino01
+Fecha       : 2025-11-27 02:38:32.551103
+------------------------------------------------------------
+ERRORES SINTÁCTICOS:
+
+Sin errores sintácticos.

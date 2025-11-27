@@ -1,0 +1,2 @@
+ERRORES SEMÁNTICOS DETECTADOS:
+Línea 5: operación inválida entre 'string' y 'int' usando '+'.

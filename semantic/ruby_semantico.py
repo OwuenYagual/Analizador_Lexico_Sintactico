@@ -5,7 +5,12 @@
 
 import re
 import sys
-from logg_semantico import agregar_error, guardar_log
+
+# Soportar tanto importación relativa (desde intro.py) como ejecución directa (desde línea de comandos)
+try:
+    from .logg_semantico import agregar_error, guardar_log
+except ImportError:
+    from logg_semantico import agregar_error, guardar_log
 
 
 
