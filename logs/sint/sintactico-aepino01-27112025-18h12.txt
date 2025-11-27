@@ -1,0 +1,11 @@
+ANÁLISIS SINTÁCTICO (Ruby)
+Usuario Git : aepino01
+Fecha       : 2025-11-27 18:12:38.059651
+------------------------------------------------------------
+ERRORES SINTÁCTICOS:
+
+Error sintáctico cerca de '1' en la línea 1
+Error sintáctico cerca de 'return' en la línea 11
+Error sintáctico cerca de 'return' en la línea 16
+Error sintáctico cerca de 'return' en la línea 20
+Error sintáctico cerca de 'return' en la línea 25

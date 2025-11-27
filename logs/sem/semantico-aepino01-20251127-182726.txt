@@ -1,0 +1,3 @@
+ERRORES SEMÁNTICOS DETECTADOS:
+Línea 7: operación inválida entre 'int' y 'string' usando '/'.
+Línea 12: la función 'suma' debe retornar 'int' pero retorna 'string'.

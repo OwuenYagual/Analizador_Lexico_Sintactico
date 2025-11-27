@@ -1,0 +1,11 @@
+ANÁLISIS SINTÁCTICO (Ruby)
+Usuario Git : aepino01
+Fecha       : 2025-11-27 18:21:46.342062
+------------------------------------------------------------
+ERRORES SINTÁCTICOS:
+
+Error sintáctico cerca de '3' en la línea 2
+Error sintáctico cerca de '
+' en la línea 4
+Error sintáctico cerca de 'end' en la línea 6
+Error sintáctico: fin de entrada inesperado

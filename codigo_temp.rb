@@ -1,5 +1,16 @@
-a = 5
-b = 10
-c = a + b       # Correcto: suma de enteros
+# Variable sin definir
+puts x
 
-d = "hola" + 5  # Incorrecto: no se puede sumar string con int
+# División por tipo inválido
+a = 10
+b = "hola"
+c = a / b
+
+# Return incorrecto según documentacion
+# @return int
+def suma(a, b)
+  return "hola"
+end
+
+# Uso de variable antes de declararla
+y = z + 2

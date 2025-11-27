@@ -44,6 +44,8 @@ tokens = (
 
     # otros
     'NEWLINE',
+    'RETURN',
+
 
     # reservadas usadas en la gramática
     'IF',
@@ -103,6 +105,10 @@ def p_statement(p):
                  | class_def
                  | data_structure_stmt'''
     p[0] = p[1]
+
+def p_return_stmt(p):
+    'statement : RETURN expr'
+    p[0] = ("return", p[2])
 
 # ============================================================
 # ===================== INTEGRANTE 1 ==========================
@@ -216,29 +222,6 @@ def p_while_stmt(p):
 def p_statement_list_newline(p):
     'statement_list : statement_list NEWLINE'
     p[0] = p[1]
-
-def p_if_stmt(p):
-    '''if_stmt : IF expr NEWLINE statement_list END
-               | IF expr THEN statement_list END
-               | IF expr statement_list END'''
-    if len(p) == 6:
-        p[0] = ("if", p[2], p[4])
-    else:
-        p[0] = ("if", p[2], p[3])
-
-def p_while_stmt(p):
-    '''while_stmt : WHILE expr NEWLINE statement_list END
-                  | WHILE expr DO statement_list END
-                  | WHILE expr statement_list END'''
-    if len(p) == 6:
-        p[0] = ("while", p[2], p[4])
-    else:
-        p[0] = ("while", p[2], p[3])
-
-def p_statement_with_newline(p):
-    'statement : NEWLINE statement'
-    p[0] = p[2]
-
 # ============================================================
 # ===================== INTEGRANTE 3 ==========================
 # Joaquin Guerra Aviles
