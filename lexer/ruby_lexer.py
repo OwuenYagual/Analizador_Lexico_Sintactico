@@ -82,9 +82,6 @@ tokens = (
     'SEMICOLON',
 
     # operadores lógicos
-    'AND',
-    'OR',
-    'NOT',
     'AND_OP',
     'OR_OP',
     'NOT_OP',
@@ -175,7 +172,7 @@ def t_comment_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
-t_comment_ignore = ' \t'
+t_comment_ignore = ' \t\r'
 
 def t_comment_any(t):
     r'.'

@@ -1,0 +1,4 @@
+ERRORES SEMÁNTICOS DETECTADOS:
+Línea 3: la función 'suma' debe retornar 'int' pero retorna 'string'.
+Línea 8: la función 'mensaje' debe retornar 'string' pero retorna 'int'.
+Línea 13: la función 'valido' debe retornar 'bool' pero retorna 'string'.
