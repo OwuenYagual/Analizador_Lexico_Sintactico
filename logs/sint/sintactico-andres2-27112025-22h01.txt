@@ -1,0 +1,12 @@
+ANÁLISIS SINTÁCTICO (Ruby)
+Usuario Git : andres2
+Fecha       : 2025-11-27 22:01:15.075647
+------------------------------------------------------------
+ERRORES SINTÁCTICOS:
+
+Error sintáctico cerca de '
+' en la línea 1
+Error sintáctico cerca de '&&' en la línea 13
+Error sintáctico cerca de '
+' en la línea 22
+Error sintáctico cerca de 'end' en la línea 24

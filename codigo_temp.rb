@@ -1,14 +1,7 @@
-# @return int
-def suma
-  return "hola"
+arr_int.each do |x|
+  puts x + 1
 end
 
-# @return string
-def mensaje
-  return 100
-end
-
-# @return bool
-def valido
-  return "true"
+arr_str.each do |x|
+  puts x - 1
 end

@@ -1,0 +1,216 @@
+Tipo: DEF, Valor: def
+Tipo: ID, Valor: factorial
+Tipo: LPAR, Valor: (
+Tipo: ID, Valor: n
+Tipo: RPAR, Valor: )
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: result
+Tipo: ASIG, Valor: =
+Tipo: NUMBER, Valor: 1
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: i
+Tipo: ASIG, Valor: =
+Tipo: NUMBER, Valor: 1
+Tipo: NEWLINE, Valor: 
+
+Tipo: WHILE, Valor: while
+Tipo: ID, Valor: i
+Tipo: MENORIG, Valor: <=
+Tipo: ID, Valor: n
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: result
+Tipo: ASIG, Valor: =
+Tipo: ID, Valor: result
+Tipo: TIMES, Valor: *
+Tipo: ID, Valor: i
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: i
+Tipo: ASIG, Valor: =
+Tipo: ID, Valor: i
+Tipo: PLUS, Valor: +
+Tipo: NUMBER, Valor: 1
+Tipo: NEWLINE, Valor: 
+
+Tipo: END, Valor: end
+Tipo: NEWLINE, Valor: 
+
+Tipo: RETURN, Valor: return
+Tipo: ID, Valor: result
+Tipo: NEWLINE, Valor: 
+
+Tipo: END, Valor: end
+Tipo: NEWLINE, Valor: 
+
+Tipo: NEWLINE, Valor: 
+
+Tipo: DEF, Valor: def
+Tipo: ID, Valor: es_par?
+Tipo: LPAR, Valor: (
+Tipo: ID, Valor: n
+Tipo: RPAR, Valor: )
+Tipo: NEWLINE, Valor: 
+
+Tipo: IF, Valor: if
+Tipo: ID, Valor: n
+Tipo: MOD, Valor: %
+Tipo: NUMBER, Valor: 2
+Tipo: IGUAL, Valor: ==
+Tipo: NUMBER, Valor: 0
+Tipo: NEWLINE, Valor: 
+
+Tipo: TRUE, Valor: true
+Tipo: NEWLINE, Valor: 
+
+Tipo: ELSE, Valor: else
+Tipo: NEWLINE, Valor: 
+
+Tipo: FALSE, Valor: false
+Tipo: NEWLINE, Valor: 
+
+Tipo: END, Valor: end
+Tipo: NEWLINE, Valor: 
+
+Tipo: END, Valor: end
+Tipo: NEWLINE, Valor: 
+
+Tipo: NEWLINE, Valor: 
+
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: puts
+Tipo: STRING, Valor: Factorial de 5:
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: puts
+Tipo: ID, Valor: factorial
+Tipo: LPAR, Valor: (
+Tipo: NUMBER, Valor: 5
+Tipo: RPAR, Valor: )
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: puts
+Tipo: STRING, Valor: ¿10 es par?
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: puts
+Tipo: ID, Valor: es_par?
+Tipo: LPAR, Valor: (
+Tipo: NUMBER, Valor: 10
+Tipo: RPAR, Valor: )
+Tipo: NEWLINE, Valor: 
+
+Tipo: NEWLINE, Valor: 
+
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: lista
+Tipo: ASIG, Valor: =
+Tipo: LCOR, Valor: [
+Tipo: NUMBER, Valor: 1
+Tipo: COMA, Valor: ,
+Tipo: NUMBER, Valor: 2
+Tipo: COMA, Valor: ,
+Tipo: NUMBER, Valor: 3
+Tipo: COMA, Valor: ,
+Tipo: NUMBER, Valor: 4
+Tipo: RCOR, Valor: ]
+Tipo: NEWLINE, Valor: 
+
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: persona
+Tipo: ASIG, Valor: =
+Tipo: LKEY, Valor: {
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: nombre
+Tipo: LEXICAL_ERROR, Valor: :
+Tipo: STRING, Valor: Joaquin
+Tipo: COMA, Valor: ,
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: edad
+Tipo: LEXICAL_ERROR, Valor: :
+Tipo: NUMBER, Valor: 23
+Tipo: NEWLINE, Valor: 
+
+Tipo: RKEY, Valor: }
+Tipo: NEWLINE, Valor: 
+
+Tipo: NEWLINE, Valor: 
+
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: a
+Tipo: ASIG, Valor: =
+Tipo: NUMBER, Valor: 10
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: b
+Tipo: ASIG, Valor: =
+Tipo: NUMBER, Valor: 3
+Tipo: NEWLINE, Valor: 
+
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: c
+Tipo: ASIG, Valor: =
+Tipo: ID, Valor: a
+Tipo: EXP, Valor: **
+Tipo: ID, Valor: b
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: d
+Tipo: ASIG, Valor: =
+Tipo: ID, Valor: a
+Tipo: DIVIDE, Valor: /
+Tipo: ID, Valor: b
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: e
+Tipo: ASIG, Valor: =
+Tipo: ID, Valor: a
+Tipo: MOD, Valor: %
+Tipo: ID, Valor: b
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: f
+Tipo: ASIG, Valor: =
+Tipo: ID, Valor: a
+Tipo: MAYORIG, Valor: >=
+Tipo: ID, Valor: b
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: g
+Tipo: ASIG, Valor: =
+Tipo: ID, Valor: a
+Tipo: DIFERENTE, Valor: !=
+Tipo: ID, Valor: b
+Tipo: NEWLINE, Valor: 
+
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: puts
+Tipo: ID, Valor: c
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: puts
+Tipo: ID, Valor: d
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: puts
+Tipo: ID, Valor: e
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: puts
+Tipo: ID, Valor: f
+Tipo: NEWLINE, Valor: 
+
+Tipo: ID, Valor: puts
+Tipo: ID, Valor: g
+Tipo: NEWLINE, Valor: 
+

@@ -1,11 +1,12 @@
 import tkinter as tk
 import subprocess
-from tkinter import messagebox
+from tkinter import messagebox, simpledialog
 import os
 import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from lexer import ruby_lexer  
+from lexer.log_lexico import analizar_y_log
 from parser.log_sintactico import analizar_sintactico_y_log
 from parser.ruby_parser import construir_parser
 
@@ -136,23 +137,32 @@ def crear_ventana3():
 
     def analizar_lexico():
         codigo = entrada_lexico.get("1.0", tk.END)  # Obtiene el texto del Text widget
+        
+        if not codigo.strip():
+            messagebox.showwarning("Aviso", "Por favor ingresa código para analizar")
+            return
+        
+        # Pedir nombre de usuario
+        usuario = simpledialog.askstring("Usuario", "Ingresa tu nombre de usuario:")
+        if usuario is None or usuario.strip() == "":
+            messagebox.showwarning("Aviso", "Debes ingresar un nombre de usuario")
+            return
+        
+        usuario = usuario.strip()
 
-        # Construir una instancia del lexer definida en `ruby_lexer.py`
-        lexer = ruby_lexer.construir_lexer()
-        lexer.input(codigo)  # Carga el texto en el lexer
+        # Ejecutar análisis léxico y guardar log
+        try:
+            from lexer.log_lexico import analizar_y_log
+            resultados, ruta_log = analizar_y_log(codigo, usuario)
+            
+            if resultados:
+                contenido = "\n".join(resultados)
+            else:
+                contenido = "No se encontraron tokens"
 
-        resultados = []
-        while True:
-            tok = lexer.token()
-            if not tok:
-                break
-            resultados.append(f"Tipo: {tok.type}, Valor: {tok.value}")
-        if resultados:
-            contenido = "\n".join(resultados)
-        else:
-            contenido = "No se encontraron tokens"
-
-        show_result_window("Resultado - Léxico", contenido, error=False)
+            show_result_window("Resultado - Léxico", contenido, error=False)
+        except Exception as e:
+            messagebox.showerror("Error", f"Error al ejecutar análisis léxico:\n{str(e)}")
 
     tk.Button(frame3, text="Analizar", width=15, height=2, command=analizar_lexico).pack(pady=20)
     tk.Button(frame3, text="Volver al menú", command=lambda: mostrar_ventana("ventana2")).pack()
@@ -180,19 +190,27 @@ def crear_ventana4():
         if codigo == "":
             messagebox.showwarning("Aviso", "Escribe algo para analizar")
             return
+        
+        # Pedir nombre de usuario
+        usuario = simpledialog.askstring("Usuario", "Ingresa tu nombre de usuario:")
+        if usuario is None or usuario.strip() == "":
+            messagebox.showwarning("Aviso", "Debes ingresar un nombre de usuario")
+            return
+        
+        usuario = usuario.strip()
+        
         try:
-            # Ejecutar el parser en memoria y mostrar sólo los errores (sin metadatos)
-            lexer = ruby_lexer.construir_lexer()
-            parser, parser_errors = construir_parser()
-
-            parser.parse(codigo, lexer=lexer)
-
-            if parser_errors:
-                contenido = "ERRORES SINTÁCTICOS:\n" + "\n".join(parser_errors)
-                show_result_window("Resultado - Sintáctico", contenido)
-            else:
-                contenido = "Sin errores sintácticos."
-                show_result_window("Resultado - Sintáctico", contenido)
+            # Generar log llamando a analizar_sintactico_y_log
+            ruta_log = analizar_sintactico_y_log(codigo, usuario)
+            
+            # Leer el archivo de log
+            try:
+                with open(ruta_log, "r", encoding="utf-8") as f:
+                    contenido = f.read()
+            except Exception:
+                contenido = f"Análisis completado.\nNo se pudo leer el archivo de log en:\n{ruta_log}"
+            
+            show_result_window("Resultado - Sintáctico", contenido)
         except Exception as e:
             messagebox.showerror("Error de sintaxis", f"Ocurrió un error al ejecutar el analizador sintáctico:\n{str(e)}")
 
@@ -224,12 +242,19 @@ def crear_ventana5():
             messagebox.showwarning("Aviso", "No hay código para analizar")
             return
 
+        # Pedir nombre de usuario
+        usuario = simpledialog.askstring("Usuario", "Ingresa tu nombre de usuario:")
+        if usuario is None or usuario.strip() == "":
+            messagebox.showwarning("Aviso", "Debes ingresar un nombre de usuario")
+            return
+        
+        usuario = usuario.strip()
+
         with open("codigo_temp.rb", "w", encoding="utf-8") as f:
             f.write(codigo)
 
         try:
             # Ejecutar el analizador semántico directamente en este proceso
-            usuario = "aepino01"
             analizador = RubySemanticAnalyzer()
             errores = analizador.analizar("codigo_temp.rb")
 

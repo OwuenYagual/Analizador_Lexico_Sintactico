@@ -24,12 +24,6 @@ def analizar_sintactico_y_log(codigo_fuente: str, usuario_git: str) -> str:
     ruta_archivo   = os.path.join(LOG_DIR, nombre_archivo)
 
     with open(ruta_archivo, "w", encoding="utf-8") as f:
-        f.write("ANÁLISIS SINTÁCTICO (Ruby)\n")
-        f.write(f"Usuario Git : {usuario_git}\n")
-        f.write(f"Fecha       : {ahora}\n")
-        f.write("-" * 60 + "\n")
-        f.write("ERRORES SINTÁCTICOS:\n\n")
-
         if parser_errors:
             for err in parser_errors:
                 f.write(err + "\n")
