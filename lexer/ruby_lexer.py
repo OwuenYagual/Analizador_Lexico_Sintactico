@@ -1,6 +1,11 @@
 # ruby_lexer.py
 import ply.lex as lex
 
+# Definir estados del lexer
+states = (
+    ('comment', 'exclusive'),
+)
+
 # Palabras reservadas de Ruby
 reserved = {
     "alias":   "ALIAS",
@@ -80,6 +85,9 @@ tokens = (
     'AND',
     'OR',
     'NOT',
+    'AND_OP',
+    'OR_OP',
+    'NOT_OP',
 
     #asignacion
     'ASIG',
@@ -118,9 +126,9 @@ t_PTO       = r'\.'
 t_COMA      = r','
 t_SEMICOLON = r';'
 
-t_AND       = r'&&'
-t_OR        = r'\|\|'
-t_NOT       = r'!'
+t_AND_OP      = r'&&'
+t_OR_OP        = r'\|\|'
+t_NOT_OP     = r'!'
 
 t_MASIG = r'\+='
 t_ASIG = r'='
@@ -150,10 +158,32 @@ def t_COMMENT(t):
     r'\#.*'
     pass
 
-def t_MLCOMMENT(t):
-    r'=begin(.|\n)*?=end'
-    t.lexer.lineno += t.value.count('\n')
+# ===== Comentarios multilínea: =begin ... =end =====
+
+def t_MLCOMMENT_START(t):
+    r'\s*=begin'
+    t.lexer.begin('comment')
+
+# Dentro del estado 'comment' ignoramos todo hasta '=end'
+
+def t_comment_end(t):
+    r'=end'
+    t.lexer.begin('INITIAL')
+
+def t_comment_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
+
+t_comment_ignore = ' \t'
+
+def t_comment_any(t):
+    r'.'
     pass
+
+
+def t_comment_error(t):
+    t.lexer.skip(1)
+
 
 def t_NEWLINE(t):
     r'\n+'

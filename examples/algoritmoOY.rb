@@ -4,7 +4,6 @@
 # Comentario de una línea
 
 =begin
-  Comentario multilínea para probar =begin ... =end
   Debe ser ignorado por el analizador léxico.
 =end
 
