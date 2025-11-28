@@ -95,6 +95,7 @@ tokens = (
 
     # otros
     'NEWLINE',
+    'LEXICAL_ERROR',
 ) + tuple(reserved.values())
 
 # Ignorar espacios y tabulaciones
@@ -193,7 +194,10 @@ def t_NEWLINE(t):
 def t_error(t):
     mensaje = f"Caracter ilegal '{t.value[0]}' en la línea {t.lineno}"
     t.lexer.errors.append((t.lineno, t.value[0], mensaje))
+    t.type = 'LEXICAL_ERROR'
+    t.value = t.value[0]
     t.lexer.skip(1)
+    return t
 
 def construir_lexer():
     lexer = lex.lex()
