@@ -7,6 +7,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 from lexer import ruby_lexer  
 from parser.log_sintactico import analizar_sintactico_y_log
+from parser.ruby_parser import construir_parser
 
 # Importar analizador semántico para ejecutarlo desde la GUI
 from semantic.ruby_semantico import RubySemanticAnalyzer
@@ -180,21 +181,18 @@ def crear_ventana4():
             messagebox.showwarning("Aviso", "Escribe algo para analizar")
             return
         try:
-            # Llamar al helper del parser que crea lexer+parser, ejecuta el parse
-            # y escribe un archivo de log en `logs/sint/`.
-            usuario = "aepino01"
-            ruta_log = analizar_sintactico_y_log(codigo, usuario)
+            # Ejecutar el parser en memoria y mostrar sólo los errores (sin metadatos)
+            lexer = ruby_lexer.construir_lexer()
+            parser, parser_errors = construir_parser()
 
-            # Leer el contenido del log y mostrarlo en la ventana emergente
-            try:
-                with open(ruta_log, "r", encoding="utf-8") as f:
-                    contenido = f.read()
-            except Exception:
-                contenido = f"Análisis completado. No se pudo leer el archivo de log en:\n{ruta_log}"
+            parser.parse(codigo, lexer=lexer)
 
-            # Detectar si el log contiene errores sintácticos
-            is_error = any(word in contenido.upper() for word in ("ERROR", "ERRORES", "ERRORES"))
-            show_result_window("Resultado - Sintáctico", contenido, error=is_error)
+            if parser_errors:
+                contenido = "ERRORES SINTÁCTICOS:\n" + "\n".join(parser_errors)
+                show_result_window("Resultado - Sintáctico", contenido)
+            else:
+                contenido = "Sin errores sintácticos."
+                show_result_window("Resultado - Sintáctico", contenido)
         except Exception as e:
             messagebox.showerror("Error de sintaxis", f"Ocurrió un error al ejecutar el analizador sintáctico:\n{str(e)}")
 
